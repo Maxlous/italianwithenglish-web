@@ -1,2 +1,24 @@
 <% layout("layouts/boilerplate") %>
-    <h1>test</h1>
+    <!-- <script src="/javascripts/testLogic.js"></script> -->
+    <h1>testt</h1>
+    <article>
+        <h4>Choose the correct translation for given word!</h4>
+        <h5>
+            <%= words[correctWord].italian %>
+        </h5>
+        <button>
+            <%= words[correctWord].english %>
+        </button>
+        <button>
+            <%= words[wordA()].english %>
+        </button>
+        <button>
+            <%= words[wordB()].english %>
+        </button>
+        <button>
+            <%= words[wordC()].english %>
+        </button>
+        <button>
+            <%= words[wordD()].english %>
+        </button>
+    </article>
