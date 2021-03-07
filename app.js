@@ -23,45 +23,14 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
 app.get("/", async (req, res) => {
-    const sentences = await Sentence.find({});
     const words = await Word.find({});
-    const randomIntSentence = function () {
-        return Math.floor(Math.random() * sentences.length + 1);
-        };
-    const correctSentence = randomIntSentence();
-    const sentenceA = () =>{
-        let num = randomIntSentence();
-        while (num === correctSentence){
-            num = randomIntSentence(); 
-        };
-        return num
-    }
-    const sentenceB = () =>{
-        let num = randomIntSentence();
-        while (num === correctSentence || num === sentenceA){
-            num = randomIntSentence(); 
-        };
-        return num
-    }
-    const sentenceC = () =>{
-        let num = randomIntSentence();
-        while (num === correctSentence || num === sentenceA || num === sentenceB){
-            num = randomIntSentence(); 
-        };
-        return num
-    }
-    const sentenceD = () =>{
-        let num = randomIntSentence();
-        while (num === correctSentence || num === sentenceA || num === sentenceB || num ===sentenceC){
-            num = randomIntSentence(); 
-        };
-        return num
-    };
-
+    
     const randomIntWord = function () {
-        return Math.floor(Math.random() * words.length + 1);
+        return Math.floor(Math.random() * words.length);
         };
+
     const correctWord = randomIntWord();
+
     const wordA = () =>{
         let num = randomIntWord();
         while (num === correctWord){
@@ -69,41 +38,87 @@ app.get("/", async (req, res) => {
         };
         return num
     }
+    const w1 = wordA();
+
     const wordB = () =>{
         let num = randomIntWord();
-        while (num === correctWord || num === wordA){
+        while (num === correctWord || num === w1){
             num = randomIntWord(); 
         };
         return num
     }
+    const w2 = wordB();
+
     const wordC = () =>{
         let num = randomIntWord();
-        while (num === correctWord || num === wordA || num ===wordB){
+        while (num === correctWord || num === w1 || num === w2){
             num = randomIntWord(); 
         };
         return num
     }
+    const w3 = wordC();
+
     const wordD = () =>{
         let num = randomIntWord();
-        while (num === correctWord || num === wordA || num === wordB || num ===wordC){
+        while (num === correctWord || num === w1 || num === w2 || num ===w3){
             num = randomIntWord(); 
         };
         return num
     }
-    res.render("home", {sentences, words, correctSentence, correctWord, wordA, wordB, wordC, wordD, sentenceA, sentenceB, sentenceC, sentenceD})
+    const w4 = wordD();
+
+    const randomPlaceArr = [correctWord, w1, w2, w3, w4];
+
+    const randomPlace = function () {
+        return Math.floor(Math.random() * randomPlaceArr.length);
+        };
+
+    const place1 = () => {
+        return randomPlace();
+    };
+    const place11 = place1();
+
+    const place2 = () => {
+        let num = randomPlace();
+        while (num === place11){
+            num = randomPlace();
+        }
+        return num
+    }
+    const place22 = place2();
+
+    const place3 = () => {
+        let num = randomPlace();
+        while (num === place11 || num === place22){
+            num = randomPlace();
+        }
+        return num
+    }
+    const place33 = place3();
+
+    const place4 = () => {
+        let num = randomPlace();
+        while (num === place11 || num=== place22 || num===place33){
+            num = randomPlace();
+        }
+        return num
+    }
+    const place44 = place4();
+
+    const place5 = () => {
+        let num = randomPlace();
+        while (num === place11 || num ===place22 || num===place33 || num ===place44){
+            num = randomPlace();
+        }
+        return num
+    }
+    const place55 = place5();
+
+    res.render("home", {randomPlaceArr, randomPlace, 
+                        place11, place22,place33,place44,place55,
+                        words, 
+                        correctWord, w1, w2, w3, w4})
 })
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
