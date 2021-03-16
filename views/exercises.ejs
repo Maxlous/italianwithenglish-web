@@ -6,7 +6,7 @@
             <%= words[correctWord].italian %>
         </h5>
 
-        <button id="bt">
+        <button>
             <%= words[randomPlaceArr[place11]].english %>
         </button>
 
@@ -27,4 +27,23 @@
         </button>
 
     </article>
+    <section>
+        <h3 id="correct"></h3>
+        <h3 id="wrong"></h3>
+    </section>
+    <script>
+        const words = <%- words %>;
+        const randomPlaceArr = <%- randomPlaceArr %>;
+        const getRandomPlace = <%- getRandomPlace %>;
+        const place11 = <%- place11 %>;
+        const place22 = <%- place22 %>;
+        const place33 = <%- place33 %>;
+        const place44 = <%- place44 %>;
+        const place55 = <%- place55 %>;
+        const correctWord = <%- correctWord %>;
+        const w1 = <%- w1 %>;
+        const w2 = <%- w2 %>;
+        const w3 = <%- w3 %>;
+        const w4 = <%- w4 %>;
+    </script>
     <script src="javascripts/testLogic.js"></script>
