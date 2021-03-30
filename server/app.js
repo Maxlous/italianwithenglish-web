@@ -23,8 +23,12 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", async (req, res) => {
+app.get("/", (req, res) => {
     res.render("home")
+})
+
+app.get("/api", (req, res) => {
+    res.json({message: "Hello from server"})
 })
 
 app.get("/exercises", async (req,res) => {
@@ -129,8 +133,8 @@ app.get("/contact", async (req,res) => {
     res.render("contact")
 })
 
+const PORT = process.env.PORT || 3001
 
-
-app.listen(5500, () => {
-    console.log("I'm listening in port 5500")
+app.listen(PORT, () => {
+    console.log(`I'm listening on ${PORT} `)
 });
