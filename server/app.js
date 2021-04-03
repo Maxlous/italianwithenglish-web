@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors")
 const path = require("path");
 const mongoose = require("mongoose");
 const ejsMate = require("ejs-mate");
@@ -22,14 +23,15 @@ app.engine('ejs', ejsMate)
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
-
+app.use(cors())
 
 app.get("/api", (req, res) => {
     res.json({message: "Hello from server"})
 })
 
-app.get("/exercises", async (req,res) => {
+app.get("/exercises", async (req, res) => {
     const words = await Word.find({});
+    res.json([words])
 })
 
 const PORT = process.env.PORT || 3001
