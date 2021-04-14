@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ExpressionTest from '../components/ExpressionTest'
 import WordTest from '../components/WordTest'
+import "../styles/Exercises.css"
 
 const Exercises = () => {
 
@@ -14,45 +15,58 @@ const Exercises = () => {
 
     const pathHandler = (e) => {
         e.target.id === "wordsPath" ? setPath("word") : setPath("expression")
-        setDisplayPathDecision(!displayPathDecision)
+        setDisplayPathDecision(displayPathDecision => !displayPathDecision)
     }
 
     return (
         <>
-        {displayPathDecision ? (
-        <div className="mt-5 align-self-center">
-            <div className="row">
-                <h1 className="text-center">What would you like to study?</h1>
-            </div>
-            <div className="mt-5 row">
-                <div className="col-sm">
-                    <h2 className="text-center mb-5">Go with words..</h2>
-                    <div className="d-flex justify-content-center">
-                        <button id="wordsPath" onClick={pathHandler}>GO!</button>
+            {displayPathDecision ? (
+                <div className="mt-5 align-self-center">
+                    <div className="row mb-5">
+                        <h1 className="text-center">What would you like to study?</h1>
                     </div>
-                </div>
-                <div className="col-sm">
-                    <h2 className="text-center mb-5">Go with expressions..</h2>
-                    <div className="d-flex justify-content-center">
-                        <button id="expressionsPath" onClick={pathHandler}>GO!</button>
+                    <div className="mt-5 row">
+                        <div className="col-sm">
+                            <h2 className="text-center mb-5">Go with words..</h2>
+                            <div className="d-flex align-items-center justify-content-center">
+                                <div className="indicator">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <button className="mt-5" id="wordsPath" onClick={pathHandler}>GO!</button>
+                        </div>
+                        <div className="col-sm">
+                            <h2 className="text-center mb-5">Go with expressions..</h2>
+                            <div className="d-flex align-items-center justify-content-center">
+                                <div className="indicator">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                            <button className="mt-5" id="expressionsPath" onClick={pathHandler}>GO!</button>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>) : (
-            <button onClick={changePath}>Change Path!</button>
-        )}
-        
-       
-            <article>
+                </div>) : (
+                <button onClick={changePath}>Change Path!</button>
+            )}
+
+            <article className="d-flex flex-column">
                 {path === "word" ? (
                     <WordTest />
-                    ) : (<p>beni yoksay</p>)
-                }  
+                ) : (<p className="ignore"></p>)
+                }
                 {path === "expression" ? (
                     <ExpressionTest />
-                    ) : (<p>beni yoksay</p>)
-                }    
-                    
+                ) : (<p className="ignore"></p>)
+                }
+
             </article>
         </>
     )
