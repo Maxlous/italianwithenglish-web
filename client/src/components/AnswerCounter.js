@@ -1,11 +1,11 @@
-
+import "../styles/AnswerCounter.css"
 const AnswerCounter = ({ correctAnswer, wrongAnswer, answerSum, averageSuccess }) => {
     return (
-        <section className="mt-5">
-            <div className="d-flex justify-content-between mb-3">
-                <h5>Correct: {correctAnswer}</h5>
-                <h5>Wrong: {wrongAnswer}</h5>
-                <h5>Total : {answerSum}</h5>
+        <section className="mt-5 sec">
+            <div className="stats mb-3">
+                <p>Correct: {correctAnswer}</p>
+                <p className="ms-5">Wrong: {wrongAnswer}</p>
+                <p className="ms-5">Total : {answerSum}</p>
             </div>
             <div className="progress">
                 <div className="progress-bar progress-bar-striped bg-dark" role="progressbar"

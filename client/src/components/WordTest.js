@@ -1,6 +1,8 @@
 import { useEffect, useState, useRef } from "react"
 import words from "../constantWords"
 import AnswerCounter from "./AnswerCounter";
+import PreviousSolution from "./PreviousSolution";
+import Flag from "react-flagpack";
 
 const WordTest = () => {
 
@@ -185,27 +187,28 @@ const WordTest = () => {
                 </h4>
                 <h5 className="text-center mb-4" ref={correctAnswerContainer}>
                     {words[correctWord].italian}
-                </h5>
-                <button className="mb-4" onClick={handleAnswer}>
+                </h5><Flag code="IT" />
+                <button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
                     {words[randomPlaceArrForWords[place1word]].english}
                 </button>
 
-                <button className="mb-4" onClick={handleAnswer}>
+                <button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
                     {words[randomPlaceArrForWords[place2word]].english}
                 </button>
 
-                <button className="mb-4" onClick={handleAnswer}>
+                <button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
                     {words[randomPlaceArrForWords[place3word]].english}
                 </button>
 
-                <button className="mb-4" onClick={handleAnswer}>
+                <button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
                     {words[randomPlaceArrForWords[place4word]].english}
                 </button>
 
-                <button className="mb-4" onClick={handleAnswer}>
+                <button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
                     {words[randomPlaceArrForWords[place5word]].english}
                 </button>
             </div>
+            <PreviousSolution />
             <AnswerCounter correctAnswer={correctAnswer} wrongAnswer={wrongAnswer}
                 answerSum={answerSum} averageSuccess={averageSuccess} />
         </>

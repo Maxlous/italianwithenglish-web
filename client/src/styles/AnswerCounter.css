@@ -1,0 +1,14 @@
+.sec {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.progress {
+  width: 50em;
+  align-self: center;
+}
+
+.stats {
+  align-self: center;
+  display: flex;
+}

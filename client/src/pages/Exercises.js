@@ -37,7 +37,11 @@ const Exercises = () => {
                                     <span></span>
                                 </div>
                             </div>
-                            <button className="mt-5" id="wordsPath" onClick={pathHandler}>GO!</button>
+                            <button className="mt-5 pushable" id="wordsPath" onClick={pathHandler}>
+                                <span className="shadow"></span>
+                                <span className="edge"></span>
+                                <span className="front">GO</span>
+                            </button>
                         </div>
                         <div className="col-sm">
                             <h2 className="text-center mb-5">Go with expressions..</h2>
@@ -50,7 +54,11 @@ const Exercises = () => {
                                     <span></span>
                                 </div>
                             </div>
-                            <button className="mt-5" id="expressionsPath" onClick={pathHandler}>GO!</button>
+                            <button className="mt-5 pushable" id="expressionsPath" onClick={pathHandler}>
+                                <span className="shadow"></span>
+                                <span className="edge"></span>
+                                <span className="front">GO</span>
+                            </button>
                         </div>
                     </div>
                 </div>) : (

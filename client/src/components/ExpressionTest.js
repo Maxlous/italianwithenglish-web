@@ -1,6 +1,8 @@
 import { useEffect, useState, useRef } from "react"
 import expressions from "../constantExpressions";
 import AnswerCounter from "./AnswerCounter";
+import PreviousSolution from "./PreviousSolution";
+import Flag from "react-flagpack"
 
 const ExpressionTest = () => {
 
@@ -182,29 +184,31 @@ const ExpressionTest = () => {
                 <h4 className="text-center mb-5">
                     Choose the correct translation for given word!
             </h4>
+
                 <h5 className="text-center mb-4" ref={correctAnswerContainer}>
                     {expressions[correctWord].italian}
-                </h5>
-                <button className="mb-4" onClick={handleAnswer}>
+                </h5><Flag code="IT" />
+                <button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
                     {expressions[randomPlaceArrForWords[place1word]].english}
                 </button>
 
-                <button className="mb-4" onClick={handleAnswer}>
+                <button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
                     {expressions[randomPlaceArrForWords[place2word]].english}
                 </button>
 
-                <button className="mb-4" onClick={handleAnswer}>
+                <button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
                     {expressions[randomPlaceArrForWords[place3word]].english}
                 </button>
 
-                <button className="mb-4" onClick={handleAnswer}>
+                <button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
                     {expressions[randomPlaceArrForWords[place4word]].english}
                 </button>
 
-                <button className="mb-4" onClick={handleAnswer}>
+                <button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
                     {expressions[randomPlaceArrForWords[place5word]].english}
                 </button>
             </div>
+            <PreviousSolution />
             <AnswerCounter correctAnswer={correctAnswer} wrongAnswer={wrongAnswer}
                 answerSum={answerSum} averageSuccess={averageSuccess} />
         </>
