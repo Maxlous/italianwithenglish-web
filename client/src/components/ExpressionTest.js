@@ -12,6 +12,9 @@ const ExpressionTest = () => {
     const [answerSum, setAnswerSum] = useState(0);
     const [averageSuccess, setAverageSuccess] = useState(0);
     const correctAnswerContainer = useRef(null);
+    const [italian, setItalian] = useState("")
+    const [english, setEnglish] = useState("")
+    const [prevAnswerEffect, setPrevAnswerEffect] = useState("")
 
     useEffect(() => {
         // eslint-disable-next-line
@@ -172,10 +175,14 @@ const ExpressionTest = () => {
 
     const handleAnswer = (e) => {
         let correctItalianValue = correctAnswerContainer.current.innerText;
+        setItalian(correctItalianValue)
+        setEnglish(correctEnglishValue(correctItalianValue))
         if (e.target.innerText === correctEnglishValue(correctItalianValue)) {
             inCorrect()
+            setPrevAnswerEffect("correct-answer")
         } else {
             inWrong()
+            setPrevAnswerEffect("wrong-answer")
         }
     }
     return (
@@ -183,11 +190,13 @@ const ExpressionTest = () => {
             <div className="d-flex flex-column align-items-center">
                 <h4 className="text-center mb-5">
                     Choose the correct translation for given word!
-            </h4>
-
-                <h5 className="text-center mb-4" ref={correctAnswerContainer}>
-                    {expressions[correctWord].italian}
-                </h5><Flag code="IT" />
+                </h4>
+                <div className="d-flex flex-row">
+                    <Flag code="IT" />
+                    <h5 className="text-center ms-2 mb-4" ref={correctAnswerContainer}>
+                        {expressions[correctWord].italian}
+                    </h5>
+                </div>
                 <button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
                     {expressions[randomPlaceArrForWords[place1word]].english}
                 </button>
@@ -208,9 +217,9 @@ const ExpressionTest = () => {
                     {expressions[randomPlaceArrForWords[place5word]].english}
                 </button>
             </div>
-            <PreviousSolution />
+            <PreviousSolution italian={italian} english={english} prevAnswerEffect={prevAnswerEffect} />
             <AnswerCounter correctAnswer={correctAnswer} wrongAnswer={wrongAnswer}
-                answerSum={answerSum} averageSuccess={averageSuccess} />
+                answerSum={answerSum} averageSuccess={averageSuccess} pbColor={prevAnswerEffect} />
         </>
     )
 }

@@ -14,7 +14,7 @@ const Exercises = () => {
     }
 
     const pathHandler = (e) => {
-        e.target.id === "wordsPath" ? setPath("word") : setPath("expression")
+        e.target.parentElement.id === "wordsPath" ? setPath("word") : setPath("expression")
         setDisplayPathDecision(displayPathDecision => !displayPathDecision)
     }
 

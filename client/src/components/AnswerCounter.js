@@ -1,19 +1,32 @@
-import "../styles/AnswerCounter.css"
-const AnswerCounter = ({ correctAnswer, wrongAnswer, answerSum, averageSuccess }) => {
+import "../styles/AnswerCounter.css";
+import { GiCheckMark } from "react-icons/gi"
+import { FaTimes, FaSpinner } from "react-icons/fa"
+const AnswerCounter = ({ correctAnswer, wrongAnswer, answerSum, averageSuccess, pbColor }) => {
+
+    let progressbarBackground = {};
+
+    if (pbColor === "correct-answer") {
+        progressbarBackground = "#99d98c"
+    }
+
+    if (pbColor === "wrong-answer") {
+        progressbarBackground = "#ff6b6b"
+    }
+
     return (
         <section className="mt-5 sec">
             <div className="stats mb-3">
-                <p>Correct: {correctAnswer}</p>
-                <p className="ms-5">Wrong: {wrongAnswer}</p>
-                <p className="ms-5">Total : {answerSum}</p>
+                <p><GiCheckMark /> Correct: {correctAnswer}</p>
+                <p className="ms-5"><FaTimes /> Wrong: {wrongAnswer}</p>
+                <p className="ms-5"><FaSpinner /> Total : {answerSum}</p>
             </div>
             <div className="progress">
-                <div className="progress-bar progress-bar-striped bg-dark" role="progressbar"
-                    style={{ width: `${averageSuccess}%` }} aria-valuenow={averageSuccess}
+                <div className="progress-bar progress-bar-striped" role="progressbar"
+                    style={{ width: `${averageSuccess}%`, backgroundColor: `${progressbarBackground}` }} aria-valuenow={averageSuccess}
                     aria-valuemin="0" aria-valuemax="100">{averageSuccess} %
                 </div>
             </div>
-        </section>
+        </section >
     )
 }
 
