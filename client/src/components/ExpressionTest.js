@@ -188,7 +188,7 @@ const ExpressionTest = () => {
     return (
         <>
             <div className="d-flex flex-column align-items-center">
-                <h4 className="text-center mb-5">
+                <h4 className="text-center mb-5 white-text">
                     Choose the correct translation for given word!
                 </h4>
                 <div className="d-flex flex-row">

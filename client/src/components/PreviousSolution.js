@@ -21,7 +21,7 @@ const PreviousSolution = ({ italian, english, prevAnswerEffect }) => {
 
 
     return (
-        <section style={style}>
+        <section className="align-self-center" style={style}>
             <h6 className="mb-2"><AiOutlineRollback size="1.3em" /> <u>Previous Solution</u></h6>
             <Flag code="IT" /> { italian}<br />
             <Flag code="GB-UKM" /> { english}

@@ -1,14 +1,12 @@
 import Header from "./Header"
-import Footer from "./Footer"
 
 const Layout = ({ children }) => {
     return (
-        <div className="d-flex flex-column vh-100">
+        <div className="vh-100">
             <Header />
             <main className="container mt-3">
-                {children} 
+                {children}
             </main>
-            <Footer />   
         </div>
     )
 }

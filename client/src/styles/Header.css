@@ -1,0 +1,23 @@
+header {
+  background: rgb(0, 0, 0, 0.1);
+  height: 3rem;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.navigation-item {
+  text-decoration: none;
+  color: white;
+  font-weight: 800;
+  font-size: 1.4rem;
+  padding: 0.1em;
+  margin: 0.3em;
+}
+
+.navigation-item:hover {
+  color: white;
+  border-bottom: 5px solid white;
+}

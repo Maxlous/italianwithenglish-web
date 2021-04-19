@@ -1,29 +1,14 @@
 import { Link } from "react-router-dom";
+import "../styles/Header.css";
 
 const Header = () => {
 
     return (
-        <header>
-            <nav className="navbar navbar-expand-lg navbar-light d-flex justify-content-center">
-                <div className="container-fluid">
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <Link className="nav-link mx-5" to="/exercises">Exercises</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="navbar-brand mx-5" to="/">Simge Gelecek</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link mx-5" to="/contact">Contact</Link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        <header className="mb-3">
+            <nav>
+                <Link className="navigation-item mx-5" to="/exercises">Exercises</Link>
+                <Link className="navigation-item mx-5" to="/">Italian with English</Link>
+                <Link className="navigation-item mx-5" to="/contact">Contact</Link>
             </nav>
         </header>
     )

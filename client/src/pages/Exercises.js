@@ -2,6 +2,7 @@ import { useState } from 'react'
 import ExpressionTest from '../components/ExpressionTest'
 import WordTest from '../components/WordTest'
 import "../styles/Exercises.css"
+import { CgArrowsExchangeAlt } from "react-icons/cg";
 
 const Exercises = () => {
 
@@ -20,6 +21,17 @@ const Exercises = () => {
 
     return (
         <>
+            <article className="d-flex flex-column">
+                {path === "word" ? (
+                    <WordTest />
+                ) : (<p className="ignore"></p>)
+                }
+                {path === "expression" ? (
+                    <ExpressionTest />
+                ) : (<p className="ignore"></p>)
+                }
+            </article>
+
             {displayPathDecision ? (
                 <div className="mt-5 align-self-center">
                     <div className="row mb-5">
@@ -62,20 +74,8 @@ const Exercises = () => {
                         </div>
                     </div>
                 </div>) : (
-                <button onClick={changePath}>Change Path!</button>
+                <button className="btn path-btn" onClick={changePath}> <CgArrowsExchangeAlt size="1.5em" /> Change Path!</button>
             )}
-
-            <article className="d-flex flex-column">
-                {path === "word" ? (
-                    <WordTest />
-                ) : (<p className="ignore"></p>)
-                }
-                {path === "expression" ? (
-                    <ExpressionTest />
-                ) : (<p className="ignore"></p>)
-                }
-
-            </article>
         </>
     )
 }
