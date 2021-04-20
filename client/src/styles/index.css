@@ -1,24 +1,20 @@
+:root {
+  --caribbeanGreen: #17c390;
+  --floralWhite: #fef9ef;
+  --redSalsa: #fe4d53;
+}
+
+* {
+  color: var(--floralWhite);
+}
+
 body {
   margin: 0;
   font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(
-    to right top,
-    #ee2626,
-    #ff5071,
-    #ff7eaf,
-    #faaadd,
-    #f2d2f7,
-    #dce3ff,
-    #d3f0ff,
-    #dbfaff,
-    #a5feff,
-    #67ffee,
-    #22ffcc,
-    #00ff9b
-  );
+  background: #0a0a0a;
 }
 
 code {

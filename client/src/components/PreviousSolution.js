@@ -7,14 +7,14 @@ const PreviousSolution = ({ italian, english, prevAnswerEffect }) => {
 
     if (prevAnswerEffect === "correct-answer") {
         style = {
-            borderLeft: "3px solid #99d98c",
+            borderLeft: "3px solid var(--caribbeanGreen)",
             padding: "1em"
         }
     }
 
     if (prevAnswerEffect === "wrong-answer") {
         style = {
-            borderLeft: "3px solid #ff6b6b",
+            borderLeft: "3px solid var(--redSalsa)",
             padding: "1em"
         }
     }

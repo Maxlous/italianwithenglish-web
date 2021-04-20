@@ -10,7 +10,7 @@ header nav {
 
 .navigation-item {
   text-decoration: none;
-  color: white;
+  color: var(--floralWhite);
   font-weight: 800;
   font-size: 1.4rem;
   padding: 0.1em;
@@ -18,6 +18,44 @@ header nav {
 }
 
 .navigation-item:hover {
-  color: white;
-  border-bottom: 5px solid white;
+  color: var(--floralWhite);
+}
+
+#header-contact:after {
+  content: "";
+  display: block;
+  border-bottom: 5px solid var(--redSalsa);
+  width: 0;
+  -webkit-transition: 0.8s ease;
+  transition: 0.8s ease;
+}
+
+#header-contact:hover:after {
+  width: 100%;
+}
+
+#header-exercises:after {
+  content: "";
+  display: block;
+  border-bottom: 5px solid var(--caribbeanGreen);
+  width: 0;
+  -webkit-transition: 0.8s ease;
+  transition: 0.8s ease;
+}
+
+#header-exercises:hover:after {
+  width: 100%;
+}
+
+#header-italian-with-english:after {
+  content: "";
+  display: block;
+  border-bottom: 5px solid var(--floralWhite);
+  width: 0;
+  -webkit-transition: 0.8s ease;
+  transition: 0.8s ease;
+}
+
+#header-italian-with-english:hover:after {
+  width: 100%;
 }

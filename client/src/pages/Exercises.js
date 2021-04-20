@@ -35,11 +35,11 @@ const Exercises = () => {
             {displayPathDecision ? (
                 <div className="mt-5 align-self-center">
                     <div className="row mb-5">
-                        <h1 className="text-center">What would you like to study?</h1>
+                        <h1 className="text-center h1-style">What would you like to study?</h1>
                     </div>
                     <div className="mt-5 row">
                         <div className="col-sm">
-                            <h2 className="text-center mb-5">Go with words..</h2>
+                            <h2 className="text-center mb-5 go-text">Go with words..</h2>
                             <div className="d-flex align-items-center justify-content-center">
                                 <div className="indicator">
                                     <span></span>
@@ -56,7 +56,7 @@ const Exercises = () => {
                             </button>
                         </div>
                         <div className="col-sm">
-                            <h2 className="text-center mb-5">Go with expressions..</h2>
+                            <h2 className="text-center mb-5 go-text">Go with expressions..</h2>
                             <div className="d-flex align-items-center justify-content-center">
                                 <div className="indicator">
                                     <span></span>

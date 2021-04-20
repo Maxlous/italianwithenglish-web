@@ -6,11 +6,11 @@ const AnswerCounter = ({ correctAnswer, wrongAnswer, answerSum, averageSuccess, 
     let progressbarBackground = {};
 
     if (pbColor === "correct-answer") {
-        progressbarBackground = "#99d98c"
+        progressbarBackground = "#17C390"
     }
 
     if (pbColor === "wrong-answer") {
-        progressbarBackground = "#ff6b6b"
+        progressbarBackground = "#FE4D53"
     }
 
     return (
