@@ -33,7 +33,7 @@ const Exercises = () => {
             </article>
 
             {displayPathDecision ? (
-                <div className="mt-5 align-self-center">
+                <div id="path-decision">
                     <div className="row mb-5">
                         <h1 className="text-center h1-style">What would you like to study?</h1>
                     </div>

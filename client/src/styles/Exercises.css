@@ -1,3 +1,9 @@
+#path-decision {
+  position: absolute;
+  top: 25vh;
+  width: 68%;
+}
+
 #wordsPath {
   position: relative;
   left: 50%;

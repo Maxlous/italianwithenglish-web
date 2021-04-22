@@ -1,9 +1,14 @@
+import ContactMe from "../components/ContactMe"
+import ForDevelopers from "../components/ForDevelopers";
+import "../styles/Contact.css"
 
 const Contact = () => {
+
     return (
-        <div>
-            I am contact page
-        </div>
+        <main id="contact">
+            <ContactMe />
+            <ForDevelopers />
+        </main>
     )
 }
 
