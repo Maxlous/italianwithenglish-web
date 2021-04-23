@@ -3,6 +3,7 @@ import ExpressionTest from '../components/ExpressionTest'
 import WordTest from '../components/WordTest'
 import "../styles/Exercises.css"
 import { CgArrowsExchangeAlt } from "react-icons/cg";
+import styled from "styled-components";
 
 const Exercises = () => {
 
@@ -24,11 +25,11 @@ const Exercises = () => {
             <article className="d-flex flex-column">
                 {path === "word" ? (
                     <WordTest />
-                ) : (<p className="ignore"></p>)
+                ) : <Ignore />
                 }
                 {path === "expression" ? (
                     <ExpressionTest />
-                ) : (<p className="ignore"></p>)
+                ) : <Ignore />
                 }
             </article>
 
@@ -81,3 +82,7 @@ const Exercises = () => {
 }
 
 export default Exercises
+
+const Ignore = styled.p`
+    display: none;
+    `

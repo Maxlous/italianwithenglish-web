@@ -15,6 +15,21 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #0a0a0a;
+
+  /* background-image: linear-gradient(
+    to right top,
+    #e6f2ec,
+    #e8f5f3,
+    #edf7f9,
+    #f3f9fc,
+    #f9fbfe,
+    #f8f9fd,
+    #f8f6fb,
+    #f8f4f9,
+    #f5ecf2,
+    #f4e3ea,
+    #f2dbdf
+  ); */
 }
 
 code {

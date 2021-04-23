@@ -3,6 +3,7 @@ import words from "../constantWords"
 import AnswerCounter from "./AnswerCounter";
 import PreviousSolution from "./PreviousSolution";
 import Flag from "react-flagpack";
+import styled from "styled-components";
 
 const WordTest = () => {
 
@@ -198,24 +199,24 @@ const WordTest = () => {
                         {words[correctWord].italian}
                     </h5>
                 </div>
-                <button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
+                <Button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
                     {words[randomPlaceArrForWords[place1word]].english}
-                </button>
-                <button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
+                </Button>
+                <Button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
                     {words[randomPlaceArrForWords[place2word]].english}
-                </button>
+                </Button>
 
-                <button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
+                <Button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
                     {words[randomPlaceArrForWords[place3word]].english}
-                </button>
+                </Button>
 
-                <button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
+                <Button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
                     {words[randomPlaceArrForWords[place4word]].english}
-                </button>
+                </Button>
 
-                <button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
+                <Button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
                     {words[randomPlaceArrForWords[place5word]].english}
-                </button>
+                </Button>
             </div>
             <PreviousSolution italian={italian} english={english} prevAnswerEffect={prevAnswerEffect} />
             <AnswerCounter correctAnswer={correctAnswer} wrongAnswer={wrongAnswer}
@@ -225,3 +226,9 @@ const WordTest = () => {
 }
 
 export default WordTest
+
+const Button = styled.button`
+    background-color: transparent;
+    border-radius: 1.5em;
+    padding: 0.5em 2em 0.5em 2em;
+  `
