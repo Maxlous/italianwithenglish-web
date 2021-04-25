@@ -1,15 +1,20 @@
 import ContactMe from "../components/ContactMe"
 import ForDevelopers from "../components/ForDevelopers";
-import "../styles/Contact.css"
+import styled from "styled-components";
 
 const Contact = () => {
 
     return (
-        <main id="contact">
+        <Main>
             <ContactMe />
             <ForDevelopers />
-        </main>
+        </Main>
     )
 }
 
 export default Contact
+
+const Main = styled.main`
+    position: absolute;
+    width: 68%;
+    top: 20vh;`
