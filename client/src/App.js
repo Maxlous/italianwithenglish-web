@@ -1,9 +1,8 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { routes } from './config/Router';
-import Layout from './components/Layout';
+import { routes } from "./config/Router";
+import Layout from "./components/Layout";
 
 function App() {
-
   return (
     <Router>
       <Switch>
