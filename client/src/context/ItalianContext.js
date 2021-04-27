@@ -1,46 +1,46 @@
-import { createContext, useEffect, useState } from "react"
-import axios from "axios"
+import { createContext, useEffect, useState } from "react";
+import axios from "axios";
 
 export const ItalianContext = createContext();
 
 const Italian = ({ children }) => {
+  const [wor, setWords] = useState({});
+  const [theme, setTheme] = useState("light");
+  // const fetchWords = async () => {
+  //     try {
+  //         const data = await axios.get("http://localhost:3001/exercises");
+  //         const send = data.json()
+  //         setWords(send);
+  //         console.log(send)
+  //     } catch (error) {
+  //         console.log(error)
+  //     }
+  // }
 
-    const [wor, setWords] = useState({});
+  const fetchWords = async () => {
+    const data = await axios("http://localhost:3001/exercises");
+    setWords(data);
+  };
 
-    // const fetchWords = async () => {
-    //     try {
-    //         const data = await axios.get("http://localhost:3001/exercises");
-    //         const send = data.json()
-    //         setWords(send);
-    //         console.log(send)
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }    
+  useEffect(() => {
+    fetchWords();
+  }, []);
 
-    const fetchWords = async () => {
-        const data = await axios("http://localhost:3001/exercises");
-        setWords(data);
-    }
+  // const randomIntSentence = function () {
+  //     return Math.floor(Math.random() * sentences.length);
+  // };
 
-    useEffect(() => {
-        fetchWords();        
-    }, [])
-
-    
-
-    // const randomIntSentence = function () {
-    //     return Math.floor(Math.random() * sentences.length); 
-    // };
-
-    return (
-        <ItalianContext.Provider value={{
-            wor,           
-            }}>
-        {children}
-        </ItalianContext.Provider>
-    )
-}
+  return (
+    <ItalianContext.Provider
+      value={{
+        wor,
+        theme,
+        setTheme,
+      }}
+    >
+      {children}
+    </ItalianContext.Provider>
+  );
+};
 
 export default Italian;
-

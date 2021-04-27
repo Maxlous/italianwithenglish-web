@@ -1,11 +1,14 @@
-:root {
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyles = createGlobalStyle`
+    :root {
   --caribbeanGreen: #17c390;
   --floralWhite: #fef9ef;
   --redSalsa: #fe4d53;
 }
 
 * {
-  color: var(--floralWhite);
+  color: ${(props) => props.theme.fontColor}
 }
 
 body {
@@ -14,8 +17,7 @@ body {
     "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #0a0a0a;
-
+  background-color: ${(props) => props.theme.bg}
   /* background-image: linear-gradient(
     to right top,
     #e6f2ec,
@@ -31,8 +33,4 @@ body {
     #f2dbdf
   ); */
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
+`;

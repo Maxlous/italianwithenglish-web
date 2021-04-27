@@ -1,9 +1,3 @@
-#path-decision {
-  position: absolute;
-  top: 25vh;
-  width: 68%;
-}
-
 #wordsPath {
   position: relative;
   left: 50%;
@@ -199,20 +193,4 @@
 }
 .btn-test:active {
   top: 2px;
-}
-
-.path-btn {
-  position: absolute;
-  left: 50%;
-  top: 90%;
-  transform: translate(-50%, -50%);
-  color: var(--floralWhite);
-  font-weight: 800;
-  border: 3px solid var(--floralWhite);
-  transition: 1s;
-}
-
-.path-btn:hover {
-  border-radius: 1em;
-  color: #ddd;
 }

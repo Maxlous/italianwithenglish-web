@@ -1,14 +1,22 @@
-import React from 'react'
-import whiteLogo from "../images/whiteLogo.PNG"
-import "../styles/WhiteLogo.css";
+import whiteLogo from "../images/whiteLogo.PNG";
+import styled from "styled-components";
 
 const WhiteLogo = () => {
+  return (
+    <Wrapper>
+      <Image
+        src={whiteLogo}
+        alt="white background, black text version of the logo"
+      />
+    </Wrapper>
+  );
+};
 
-    return (
-        <div id="white-logo">
-            <img src={whiteLogo} alt="white background black text version of the logo" />
-        </div>
-    )
-}
+export default WhiteLogo;
 
-export default WhiteLogo
+const Wrapper = styled.div`
+  align-self: center;
+`;
+const Image = styled.img`
+  width: 18em;
+`;

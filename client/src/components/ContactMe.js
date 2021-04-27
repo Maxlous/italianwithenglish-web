@@ -1,27 +1,51 @@
-import { MdContactMail } from 'react-icons/md';
-import "../styles/ContactMe.css";
+import { MdContactMail } from "react-icons/md";
+import styled from "styled-components";
 
 const ContactMe = () => {
+  return (
+    <Article>
+      <Wrapper>
+        <h3 style={{ textAlign: "center" }}>
+          Would you like to say something?
+        </h3>
+        <p style={{ textAlign: "center" }}>
+          <strong>
+            {
+              "If you find any bug/inconvenience or wish to see a new feature please let me know!"
+            }
+            <br />
+            {"Of course, you can also just write to say thanks or hello :)"}
+          </strong>
+        </p>
+        <div>
+          <a
+            rel="noreferrer"
+            href="mailto: byburock34@gmail.com"
+            target="_blank"
+          >
+            <MdContactMail size="3em" style={{ cursor: "pointer" }} />
+          </a>
+        </div>
+      </Wrapper>
+    </Article>
+  );
+};
 
-    return (
-        <article id="contact-me">
-            <div className="contact-me-text-container">
-                <h3 className="contact-me-text">Would you like to say something?</h3>
-                <p className="contact-me-text">
-                    <strong>
-                        {"If you find any bug/inconvenience or wish to see a new feature please let me know!"}<br />
-                        {"Of course, you can also just write to say thanks or hello :)"}
-                    </strong>
-                </p>
-                <div>
-                    <a rel="noreferrer" href="mailto: byburock34@gmail.com" target="_blank">
-                        <MdContactMail id="mail-icon" size="3em" />
-                    </a>
-                </div>
-            </div>
+export default ContactMe;
 
-        </article>
-    )
-}
+const Article = styled.article`
+  display: flex;
+  flex-direction: column;
+  padding-top: 5em;
+  padding-bottom: 5em;
+  border-top: 3px solid var(--caribbeanGreen);
+  border-bottom: 3px solid var(--floralWhite);
+  align-items: flex-start;
+`;
 
-export default ContactMe
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  align-items: center;
+`;

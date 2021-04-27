@@ -1,12 +1,12 @@
 import { VscGithubAlt } from "react-icons/vsc";
-import "../styles/ForDevelopers.css";
+import styled from "styled-components";
 
 const ForDevelopers = () => {
   return (
-    <article id="for-developers">
-      <div className="for-developers-text-container">
-        <h3 className="for-developers-text">Are you a developer?</h3>
-        <p className="for-developers-text">
+    <Article>
+      <Wrapper>
+        <h3 style={{ textAlign: "center" }}>Are you a developer?</h3>
+        <p style={{ textAlign: "center" }}>
           <strong>
             Join me on Github to contribute this project to help people learning
             Italian!
@@ -18,12 +18,28 @@ const ForDevelopers = () => {
             href="https://github.com/Maxlous/learnItalian"
             target="_blank"
           >
-            <VscGithubAlt id="github-icon" size="3em" />
+            <VscGithubAlt size="3em" style={{ cursor: "pointer" }} />
           </a>
         </div>
-      </div>
-    </article>
+      </Wrapper>
+    </Article>
   );
 };
 
 export default ForDevelopers;
+
+const Article = styled.article`
+  display: flex;
+  flex-direction: column;
+  padding-top: 5em;
+  padding-bottom: 5em;
+  border-bottom: 3px solid var(--redSalsa);
+  align-items: flex-end;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  align-items: center;
+`;
