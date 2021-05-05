@@ -5,7 +5,11 @@ export const ItalianContext = createContext();
 
 const Italian = ({ children }) => {
   const [wor, setWords] = useState({});
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(() => {
+    const themeStorage = localStorage.getItem("theme");
+    return themeStorage ? JSON.parse(themeStorage) : "dark";
+  });
+
   // const fetchWords = async () => {
   //     try {
   //         const data = await axios.get("http://localhost:3001/exercises");

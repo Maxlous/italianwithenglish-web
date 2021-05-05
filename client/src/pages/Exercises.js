@@ -108,7 +108,7 @@ const PathChanger = styled.button`
   left: 50%;
   top: 90%;
   transform: translate(-50%, -50%);
-  color: ${(props) => props.theme.fontColor}
+  color: ${(props) => props.theme.fontColor};
   font-weight: 800;
   border: 3px solid ${(props) => props.theme.fontColor};
   transition: 1s;
