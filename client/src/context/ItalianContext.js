@@ -1,5 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "../styles/themes.js";
+import { GlobalStyles } from "../styles/GlobalStyles.js";
 
 export const ItalianContext = createContext();
 
@@ -31,10 +34,6 @@ const Italian = ({ children }) => {
     fetchWords();
   }, []);
 
-  // const randomIntSentence = function () {
-  //     return Math.floor(Math.random() * sentences.length);
-  // };
-
   return (
     <ItalianContext.Provider
       value={{
@@ -43,7 +42,10 @@ const Italian = ({ children }) => {
         setTheme,
       }}
     >
-      {children}
+      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+        <GlobalStyles />
+        {children}
+      </ThemeProvider>
     </ItalianContext.Provider>
   );
 };
