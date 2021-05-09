@@ -142,6 +142,7 @@
 .pushable:focus:not(:focus-visible) {
   outline: none;
 }
+/* test buttons */
 
 .custom-btn {
   border-radius: 5px;
@@ -159,8 +160,6 @@
   transition: all 0.3s ease;
   position: relative;
   display: inline-block;
-  box-shadow: inset 2px 2px 2px 0px white, 7px 7px 20px 0px rgba(0, 0, 0, 0.1),
-    4px 4px 5px 0px rgba(0, 0, 0, 0.1), 2px 2px 2px 2px white;
   outline: none;
   border-radius: 55px;
 }
@@ -178,13 +177,13 @@
   left: 0;
   direction: rtl;
   z-index: -1;
-  box-shadow: -7px -7px 20px 0px white, -4px -4px 5px 0px white,
-    7px 7px 20px 0px white, 4px 4px 5px 0px white;
   transition: all 0.3s ease;
-  border-radius: 55px;
+  border-radius: 50px;
 }
 .btn-test:hover {
   color: #000;
+  transform: translateY(8%);
+  border-radius: 15px;
 }
 .btn-test:hover:after {
   left: auto;

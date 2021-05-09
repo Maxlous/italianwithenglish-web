@@ -8,7 +8,8 @@ export const GlobalStyles = createGlobalStyle`
 }
 
 * {
-  color: ${(props) => props.theme.fontColor}
+  color: ${(props) => props.theme.fontColor};
+  transition: all .6s ease-in;
 }
 
 body {
@@ -17,20 +18,7 @@ body {
     "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: ${(props) => props.theme.bg}
-  /* background-image: linear-gradient(
-    to right top,
-    #e6f2ec,
-    #e8f5f3,
-    #edf7f9,
-    #f3f9fc,
-    #f9fbfe,
-    #f8f9fd,
-    #f8f6fb,
-    #f8f4f9,
-    #f5ecf2,
-    #f4e3ea,
-    #f2dbdf
-  ); */
+  background-color: ${(props) => props.theme.bg};
+  transition: all .6s ease-in;
 }
 `;

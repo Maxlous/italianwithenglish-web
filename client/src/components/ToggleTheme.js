@@ -20,6 +20,7 @@ const ToggleTheme = () => {
           fill="#000000"
           viewBox="0 0 256 256"
           onClick={themeToggler}
+          style={{ cursor: "pointer" }}
         >
           <rect width="256" height="256" fill="none"></rect>
           <path
@@ -39,6 +40,7 @@ const ToggleTheme = () => {
           fill="#fff"
           viewBox="0 0 256 256"
           onClick={themeToggler}
+          style={{ cursor: "pointer" }}
         >
           <rect width="256" height="256" fill="none"></rect>
           <circle

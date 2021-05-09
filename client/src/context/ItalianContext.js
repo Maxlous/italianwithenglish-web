@@ -5,6 +5,7 @@ export const ItalianContext = createContext();
 
 const Italian = ({ children }) => {
   const [wor, setWords] = useState({});
+
   const [theme, setTheme] = useState(() => {
     const themeStorage = localStorage.getItem("theme");
     return themeStorage ? JSON.parse(themeStorage) : "dark";

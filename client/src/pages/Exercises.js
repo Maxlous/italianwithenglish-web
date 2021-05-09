@@ -114,6 +114,6 @@ const PathChanger = styled.button`
   transition: 1s;
   &:hover {
     border-radius: 1em;
-    color: #ddd;
+    color: ${(props) => props.theme.fontColor};
   }
 `;

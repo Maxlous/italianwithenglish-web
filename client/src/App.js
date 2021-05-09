@@ -1,9 +1,9 @@
+import { useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { routes } from "./config/Router";
 import Layout from "./components/Layout";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./styles/themes.js";
-import { useContext } from "react";
 import { ItalianContext } from "./context/ItalianContext";
 import { GlobalStyles } from "./styles/GlobalStyles.js";
 
