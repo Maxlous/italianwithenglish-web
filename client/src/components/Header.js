@@ -24,7 +24,7 @@ const Header = () => {
 export default Header;
 
 const HeaderElement = styled.header`
-  background: rgb(0, 0, 0, 0.1);
+  background: ${(props) => props.theme.headerBackground};
   height: 3rem;
 `;
 
@@ -35,13 +35,13 @@ const Nav = styled.nav`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: ${(props) => props.theme.fontColor};
+  color: ${(props) => props.theme.navLink};
   font-weight: 800;
   font-size: 1.4rem;
   padding: 0.1em;
   margin: 0.3em;
   &:hover {
-    color: ${(props) => props.theme.fontColor};
+    color: ${(props) => props.theme.navLink};
   }
   &:after {
     content: "";
@@ -50,7 +50,7 @@ const StyledLink = styled(Link)`
       if (props.id === "header-exercises")
         return "5px solid var(--caribbeanGreen)";
       else if (props.id === "header-italian-with-english")
-        return "5px solid var(--floralWhite)";
+        return "5px solid #DDDDDD";
       else return "5px solid var(--redSalsa)";
     }};
     width: 0;

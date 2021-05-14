@@ -37,7 +37,9 @@ const Exercises = () => {
           </div>
           <div className="mt-5 row">
             <div className="col-sm">
-              <h2 className="text-center mb-5 go-text">Go with words..</h2>
+              <StyledH2 className="text-center mb-5 go-text">
+                Go with words..
+              </StyledH2>
               <div className="d-flex align-items-center justify-content-center">
                 <div className="indicator">
                   <span></span>
@@ -58,9 +60,9 @@ const Exercises = () => {
               </button>
             </div>
             <div className="col-sm">
-              <h2 className="text-center mb-5 go-text">
+              <StyledH2 className="text-center mb-5 go-text">
                 Go with expressions..
-              </h2>
+              </StyledH2>
               <div className="d-flex align-items-center justify-content-center">
                 <div className="indicator">
                   <span></span>
@@ -116,4 +118,10 @@ const PathChanger = styled.button`
     border-radius: 1em;
     color: ${(props) => props.theme.fontColor};
   }
+`;
+
+const StyledH2 = styled.h2`
+  text-decoration: underline var(--caribbeanGreen);
+  text-decoration-thickness: 8px;
+  text-underline-offset: 5px;
 `;
