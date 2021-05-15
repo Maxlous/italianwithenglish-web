@@ -1,142 +1,27 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import words from "../constantWords";
 import AnswerCounter from "./AnswerCounter";
 import PreviousSolution from "./PreviousSolution";
 import Flag from "react-flagpack";
 import styled from "styled-components";
 import { useStatistics } from "../hooks/useStatistics";
+import { useMultipleChoice } from "../hooks/useMultipleChoice";
 
 const WordTest = () => {
   const correctAnswerContainer = useRef(null);
   const [italian, setItalian] = useState("");
   const [english, setEnglish] = useState("");
   const [prevAnswerEffect, setPrevAnswerEffect] = useState("");
+
   const [stats, setStats] = useStatistics();
-  useEffect(() => {
-    // eslint-disable-next-line
-    correctWord = randomIntWord();
-    // eslint-disable-next-line
-    w1 = wordA();
-    // eslint-disable-next-line
-    w2 = wordB();
-    // eslint-disable-next-line
-    w3 = wordC();
-    // eslint-disable-next-line
-    w4 = wordD();
-    // eslint-disable-next-line
-    place1word = place1W();
-    // eslint-disable-next-line
-    place2word = place2W();
-    // eslint-disable-next-line
-    place3word = place3W();
-    // eslint-disable-next-line
-    place4word = place4W();
-    // eslint-disable-next-line
-    place5word = place5W();
-  }, [stats.answer]);
-
-  const randomIntWord = function () {
-    return Math.floor(Math.random() * words.length);
-  };
-
-  let correctWord = randomIntWord();
-
-  const wordA = () => {
-    let num = randomIntWord();
-    while (num === correctWord) {
-      num = randomIntWord();
-    }
-    return num;
-  };
-
-  let w1 = wordA();
-
-  const wordB = () => {
-    let num = randomIntWord();
-    while (num === correctWord || num === w1) {
-      num = randomIntWord();
-    }
-    return num;
-  };
-
-  let w2 = wordB();
-
-  const wordC = () => {
-    let num = randomIntWord();
-    while (num === correctWord || num === w1 || num === w2) {
-      num = randomIntWord();
-    }
-    return num;
-  };
-
-  let w3 = wordC();
-
-  const wordD = () => {
-    let num = randomIntWord();
-    while (num === correctWord || num === w1 || num === w2 || num === w3) {
-      num = randomIntWord();
-    }
-    return num;
-  };
-
-  let w4 = wordD();
-
-  const randomPlaceArrForWords = [correctWord, w1, w2, w3, w4];
-
-  const getRandomPlaceForWords = function () {
-    return Math.floor(Math.random() * randomPlaceArrForWords.length);
-  };
-
-  const place1W = () => {
-    return getRandomPlaceForWords();
-  };
-
-  let place1word = place1W();
-
-  const place2W = () => {
-    let num = getRandomPlaceForWords();
-    while (num === place1word) {
-      num = getRandomPlaceForWords();
-    }
-    return num;
-  };
-
-  let place2word = place2W();
-
-  const place3W = () => {
-    let num = getRandomPlaceForWords();
-    while (num === place1word || num === place2word) {
-      num = getRandomPlaceForWords();
-    }
-    return num;
-  };
-
-  let place3word = place3W();
-
-  const place4W = () => {
-    let num = getRandomPlaceForWords();
-    while (num === place1word || num === place2word || num === place3word) {
-      num = getRandomPlaceForWords();
-    }
-    return num;
-  };
-
-  let place4word = place4W();
-
-  const place5W = () => {
-    let num = getRandomPlaceForWords();
-    while (
-      num === place1word ||
-      num === place2word ||
-      num === place3word ||
-      num === place4word
-    ) {
-      num = getRandomPlaceForWords();
-    }
-    return num;
-  };
-
-  let place5word = place5W();
+  const {
+    question,
+    firstOption,
+    secondOption,
+    thirdOption,
+    fourthOption,
+    fifthOption,
+  } = useMultipleChoice(words);
 
   const correctEnglishValue = (italianVal) => {
     let willBeReturned = "";
@@ -170,26 +55,26 @@ const WordTest = () => {
         <div className="d-flex flex-row">
           <Flag code="IT" />
           <h5 className="text-center mb-4 ms-2" ref={correctAnswerContainer}>
-            {words[correctWord].italian}
+            {question}
           </h5>
         </div>
         <Button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
-          {words[randomPlaceArrForWords[place1word]].english}
+          {firstOption}
         </Button>
         <Button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
-          {words[randomPlaceArrForWords[place2word]].english}
-        </Button>
-
-        <Button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
-          {words[randomPlaceArrForWords[place3word]].english}
+          {secondOption}
         </Button>
 
         <Button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
-          {words[randomPlaceArrForWords[place4word]].english}
+          {thirdOption}
         </Button>
 
         <Button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
-          {words[randomPlaceArrForWords[place5word]].english}
+          {fourthOption}
+        </Button>
+
+        <Button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
+          {fifthOption}
         </Button>
       </div>
       <PreviousSolution
