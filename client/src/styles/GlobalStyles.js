@@ -20,5 +20,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: ${(props) => props.theme.bg};
   transition: all .6s ease-in;
+  scroll-behavior: smooth;
 }
 `;
