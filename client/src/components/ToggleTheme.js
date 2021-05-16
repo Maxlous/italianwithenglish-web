@@ -27,9 +27,9 @@ const ToggleTheme = () => {
             d="M216.66238,152.64951A92.03175,92.03175,0,0,1,103.35039,39.338l.00255.00078A92.01376,92.01376,0,1,0,216.66147,152.64624Z"
             fill="none"
             stroke="#282c36"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="16"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="16"
           ></path>
         </svg>
       ) : (
@@ -49,9 +49,9 @@ const ToggleTheme = () => {
             r="60"
             fill="none"
             stroke="#fef9ef"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="16"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="16"
           ></circle>
           <line
             x1="128"
@@ -60,9 +60,9 @@ const ToggleTheme = () => {
             y2="16"
             fill="none"
             stroke="#fef9ef"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="16"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="16"
           ></line>
           <line
             x1="62.94618"
@@ -71,9 +71,9 @@ const ToggleTheme = () => {
             y2="48.80404"
             fill="none"
             stroke="#fef9ef"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="16"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="16"
           ></line>
           <line
             x1="36"
@@ -82,9 +82,9 @@ const ToggleTheme = () => {
             y2="128"
             fill="none"
             stroke="#fef9ef"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="16"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="16"
           ></line>
           <line
             x1="62.94618"
@@ -93,9 +93,9 @@ const ToggleTheme = () => {
             y2="207.19596"
             fill="none"
             stroke="#fef9ef"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="16"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="16"
           ></line>
           <line
             x1="128"
@@ -104,9 +104,9 @@ const ToggleTheme = () => {
             y2="240"
             fill="none"
             stroke="#fef9ef"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="16"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="16"
           ></line>
           <line
             x1="193.05382"
@@ -115,9 +115,9 @@ const ToggleTheme = () => {
             y2="207.19596"
             fill="none"
             stroke="#fef9ef"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="16"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="16"
           ></line>
           <line
             x1="220"
@@ -126,9 +126,9 @@ const ToggleTheme = () => {
             y2="128"
             fill="none"
             stroke="#fef9ef"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="16"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="16"
           ></line>
           <line
             x1="193.05382"
@@ -137,9 +137,9 @@ const ToggleTheme = () => {
             y2="48.80404"
             fill="none"
             stroke="#fef9ef"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="16"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="16"
           ></line>
         </svg>
       )}

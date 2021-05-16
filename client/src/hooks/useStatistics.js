@@ -2,13 +2,12 @@ import { useState, useEffect } from "react";
 
 export const useStatistics = () => {
   const [statistics, setStatistics] = useState({
-    answer: false,
     correctAnswer: 0,
     wrongAnswer: 0,
     answerSum: 0,
     average: 0,
   });
-
+  //this state is created to trigger useEffect call so we can access to up to date version of statistics state for calculating average
   const [helper, setHelper] = useState(false);
 
   useEffect(() => {
@@ -39,7 +38,6 @@ export const useStatistics = () => {
         ...statistics,
         correctAnswer: statistics.correctAnswer + 1,
         answerSum: statistics.answerSum + 1,
-        answer: !statistics.answer,
       });
       setHelper(!helper);
     } else {
@@ -47,7 +45,6 @@ export const useStatistics = () => {
         ...statistics,
         wrongAnswer: statistics.wrongAnswer + 1,
         answerSum: statistics.answerSum + 1,
-        answer: !statistics.answerSum,
       });
       setHelper(!helper);
     }
