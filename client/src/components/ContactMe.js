@@ -5,10 +5,8 @@ const ContactMe = () => {
   return (
     <Article>
       <Wrapper>
-        <h3 style={{ textAlign: "center" }}>
-          Would you like to say something?
-        </h3>
-        <p style={{ textAlign: "center" }}>
+        <Heading3>Would you like to say something?</Heading3>
+        <Paragraph>
           <strong>
             {
               "If you find any bug/inconvenience or wish to see a new feature please let me know!"
@@ -16,7 +14,7 @@ const ContactMe = () => {
             <br />
             {"Of course, you can also just write to say thanks or hello :)"}
           </strong>
-        </p>
+        </Paragraph>
         <div>
           <a
             rel="noreferrer"
@@ -48,4 +46,12 @@ const Wrapper = styled.div`
   flex-direction: column;
   max-width: 50%;
   align-items: center;
+`;
+
+const Paragraph = styled.p`
+  text-align: center;
+`;
+
+const Heading3 = styled.h3`
+  text-align: center;
 `;

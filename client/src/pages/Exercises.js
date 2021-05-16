@@ -4,6 +4,7 @@ import WordTest from "../components/WordTest";
 import "../styles/Exercises.css";
 import { CgArrowsExchangeAlt } from "react-icons/cg";
 import styled from "styled-components";
+import WhiteLogo from "../components/WhiteLogo";
 
 const Exercises = () => {
   const [path, setPath] = useState("");
@@ -29,61 +30,64 @@ const Exercises = () => {
       </article>
 
       {displayPathDecision ? (
-        <Wrapper>
-          <div className="row mb-5">
-            <h1 className="text-center h1-style">
-              What would you like to study?
-            </h1>
-          </div>
-          <div className="mt-5 row">
-            <div className="col-sm">
-              <StyledH2 className="text-center mb-5 go-text">
-                Go with words..
-              </StyledH2>
-              <div className="d-flex align-items-center justify-content-center">
-                <div className="indicator">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-              <button
-                className="mt-5 pushable"
-                id="wordsPath"
-                onClick={pathHandler}
-              >
-                <span className="shadow"></span>
-                <span className="edge"></span>
-                <span className="front">GO</span>
-              </button>
+        <>
+          <Wrapper>
+            <div className="row mb-5">
+              <h1 className="text-center h1-style">
+                What would you like to study?
+              </h1>
             </div>
-            <div className="col-sm">
-              <StyledH2 className="text-center mb-5 go-text">
-                Go with expressions..
-              </StyledH2>
-              <div className="d-flex align-items-center justify-content-center">
-                <div className="indicator">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
+            <div className="mt-5 row">
+              <div className="col-sm">
+                <StyledH2 className="text-center mb-5 go-text">
+                  Go with words..
+                </StyledH2>
+                <div className="d-flex align-items-center justify-content-center">
+                  <div className="indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
                 </div>
+                <button
+                  className="mt-5 pushable"
+                  id="wordsPath"
+                  onClick={pathHandler}
+                >
+                  <span className="shadow"></span>
+                  <span className="edge"></span>
+                  <span className="front">GO</span>
+                </button>
               </div>
-              <button
-                className="mt-5 pushable"
-                id="expressionsPath"
-                onClick={pathHandler}
-              >
-                <span className="shadow"></span>
-                <span className="edge"></span>
-                <span className="front">GO</span>
-              </button>
+              <div className="col-sm">
+                <StyledH2 className="text-center mb-5 go-text">
+                  Go with expressions..
+                </StyledH2>
+                <div className="d-flex align-items-center justify-content-center">
+                  <div className="indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+                <button
+                  className="mt-5 pushable"
+                  id="expressionsPath"
+                  onClick={pathHandler}
+                >
+                  <span className="shadow"></span>
+                  <span className="edge"></span>
+                  <span className="front">GO</span>
+                </button>
+              </div>
             </div>
-          </div>
-        </Wrapper>
+          </Wrapper>
+          <WhiteLogo />
+        </>
       ) : (
         <PathChanger className="btn" onClick={changePath}>
           {" "}
