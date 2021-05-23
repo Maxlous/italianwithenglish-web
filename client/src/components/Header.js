@@ -4,15 +4,15 @@ import ToggleTheme from "./ToggleTheme";
 
 const Header = () => {
   return (
-    <HeaderElement className="mb-3">
+    <HeaderElement>
       <Nav>
-        <StyledLink className="mx-5" id="header-exercises" to="exercises">
+        <StyledLink id="header-exercises" to="exercises">
           Exercises
         </StyledLink>
-        <StyledLink className="mx-5" id="header-italian-with-english" to="/">
+        <StyledLink id="header-italian-with-english" to="/">
           Italian with English
         </StyledLink>
-        <StyledLink className="mx-5" id="header-contact" to="/contact">
+        <StyledLink id="header-contact" to="/contact">
           Contact
         </StyledLink>
       </Nav>

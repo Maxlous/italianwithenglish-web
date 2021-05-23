@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import expressions from "../constantExpressions";
+import expressions from "../assets/Expressions";
 import AnswerCounter from "./AnswerCounter";
 import PreviousSolution from "./PreviousSolution";
 import Flag from "react-flagpack";
@@ -13,7 +13,7 @@ const ExpressionTest = () => {
   const [english, setEnglish] = useState("");
   const [prevAnswerEffect, setPrevAnswerEffect] = useState("");
 
-  const [stats, setStats] = useStatistics();
+  const [stats, setStats] = useStatistics("expressionResults");
   const {
     question,
     firstOption,
@@ -47,35 +47,17 @@ const ExpressionTest = () => {
   };
   return (
     <>
-      <div className="d-flex flex-column align-items-center">
-        <h4 className="text-center mb-5 white-text">
-          Choose the correct translation for given word!
-        </h4>
-        <div className="d-flex flex-row">
+      <div>
+        <h4>Choose the correct translation for given word!</h4>
+        <div>
           <Flag code="IT" />
-          <h5 className="text-center ms-2 mb-4" ref={correctAnswerContainer}>
-            {question}
-          </h5>
+          <h5 ref={correctAnswerContainer}>{question}</h5>
         </div>
-        <Button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
-          {firstOption}
-        </Button>
-
-        <Button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
-          {secondOption}
-        </Button>
-
-        <Button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
-          {thirdOption}
-        </Button>
-
-        <Button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
-          {fourthOption}
-        </Button>
-
-        <Button className="mb-4 custom-btn btn-test" onClick={handleAnswer}>
-          {fifthOption}
-        </Button>
+        <Button onClick={handleAnswer}>{firstOption}</Button>
+        <Button onClick={handleAnswer}>{secondOption}</Button>
+        <Button onClick={handleAnswer}>{thirdOption}</Button>
+        <Button onClick={handleAnswer}>{fourthOption}</Button>
+        <Button onClick={handleAnswer}>{fifthOption}</Button>
       </div>
       <PreviousSolution
         italian={italian}
@@ -96,7 +78,26 @@ const ExpressionTest = () => {
 export default ExpressionTest;
 
 const Button = styled.button`
-  background-color: transparent;
-  border-radius: 1.5em;
-  padding: 0.5em 2em 0.5em 2em;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  background-image: linear-gradient(
+    to right top,
+    #17c390,
+    var(--floralWhite),
+    #fef9ef,
+    var(--floralWhite),
+    #fe6d73
+  );
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+  border: none;
+  color: black;
+  border-radius: 1.5rem;
+  padding: 0.5em 2em;
+  &:hover {
+    color: #000;
+    transform: translateY(8%);
+    border-radius: 15px;
+  }
 `;

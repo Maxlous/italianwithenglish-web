@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
+import { useLocalStorage } from "./useLocalStorage";
 
-export const useStatistics = () => {
-  const [statistics, setStatistics] = useState({
+export const useStatistics = (localStorageKey) => {
+  const INITIAL_STATE = {
     correctAnswer: 0,
     wrongAnswer: 0,
     answerSum: 0,
     average: 0,
-  });
-  //this state is created to trigger useEffect call so we can access to up to date version of statistics state for calculating average
+  };
+  const [storage, setStorage] = useLocalStorage(localStorageKey, INITIAL_STATE);
+  const [statistics, setStatistics] = useState(storage);
+  //this helper state is created to trigger useEffect call so we can access to up to date version of statistics state for calculating average
   const [helper, setHelper] = useState(false);
 
   useEffect(() => {
@@ -19,6 +22,7 @@ export const useStatistics = () => {
         statistics.wrongAnswer
       ),
     });
+    setStorage(statistics);
     //eslint-disable-next-line
   }, [helper]);
 
