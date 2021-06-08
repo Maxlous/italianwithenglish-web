@@ -16,9 +16,8 @@ const StyledLink = styled(Link)`
   text-align: center;
   text-decoration: none;
   color: ${(props) => props.theme.fontColor};
-  position: absolute;
-  bottom: 15%;
-  left: 33.33333%;
+  width: 15rem;
+  align-self: center;
   &:hover {
     transition: 0.5s ease;
     border-color: var(--floralWhite) var(--redSalsa) var(--floralWhite)

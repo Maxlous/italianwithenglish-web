@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 const Illustration = (props) => {
   return (
-    <div>
+    <Container>
       <Image src={props.imageSource} alt={props.imageAlt} />
-    </div>
+    </Container>
   );
 };
 
@@ -13,4 +13,9 @@ export default Illustration;
 const Image = styled.img`
   max-width: 35em;
   max-height: 30em;
+`;
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
 `;
