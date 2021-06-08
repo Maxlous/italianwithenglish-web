@@ -10,6 +10,7 @@ export const GlobalStyles = createGlobalStyle`
 * {
   color: ${(props) => props.theme.fontColor};
   transition: all .6s ease-in;
+  box-sizing: border-box
 }
 
 body {

@@ -14,7 +14,11 @@ const Contact = () => {
 export default Contact;
 
 const Main = styled.main`
-  position: absolute;
-  width: 68%;
-  top: 20vh;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @media screen and (max-height: 570px) {
+    height: initial;
+  }
 `;

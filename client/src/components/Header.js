@@ -1,11 +1,13 @@
+import ToggleTheme from "./ToggleTheme";
+import NavIcon from "./NavIcon";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import ToggleTheme from "./ToggleTheme";
 
 const Header = () => {
   return (
     <HeaderElement>
       <Nav>
+        <ToggleTheme />
         <StyledLink id="header-exercises" to="exercises">
           Exercises
         </StyledLink>
@@ -15,8 +17,14 @@ const Header = () => {
         <StyledLink id="header-contact" to="/contact">
           Contact
         </StyledLink>
+        {window.innerWidth >= 640 ? (
+          <Link to="/">
+            <Logo src="./images/blackLogo.PNG" alt="black logo" />
+          </Link>
+        ) : (
+          <NavIcon />
+        )}
       </Nav>
-      <ToggleTheme />
     </HeaderElement>
   );
 };
@@ -25,12 +33,21 @@ export default Header;
 
 const HeaderElement = styled.header`
   background: ${(props) => props.theme.headerBackground};
-  height: 3rem;
+  height: 5vh;
+
+  @media screen and (max-height: 570px) {
+    height: 10vh;
+  }
 `;
 
 const Nav = styled.nav`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  align-items: center;
+  height: 5vh;
+  @media screen and (max-height: 570px) {
+    height: 10vh;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -38,8 +55,6 @@ const StyledLink = styled(Link)`
   color: ${(props) => props.theme.navLink};
   font-weight: 800;
   font-size: 1.4rem;
-  padding: 0.1em;
-  margin: 0.3em;
   &:hover {
     color: ${(props) => props.theme.navLink};
   }
@@ -60,4 +75,12 @@ const StyledLink = styled(Link)`
   &:hover:after {
     width: 100%;
   }
+  @media screen and (max-width: 640px) {
+    font-size: 1rem;
+  }
+`;
+
+const Logo = styled.img`
+  cursor: pointer;
+  width: 3rem;
 `;

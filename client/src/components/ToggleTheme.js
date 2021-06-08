@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ItalianContext } from "../context/ItalianContext";
-
+import styled from "styled-components";
 const ToggleTheme = () => {
   const { theme, setTheme } = useContext(ItalianContext);
 
@@ -12,15 +12,14 @@ const ToggleTheme = () => {
 
   return (
     <>
-      {theme === "light" ? (
-        <svg
+      {theme === "dark" ? (
+        <StyledThemeChanger
           xmlns="http://www.w3.org/2000/svg"
-          width="50"
-          height="50"
+          width="40"
+          height="40"
           fill="#000000"
           viewBox="0 0 256 256"
           onClick={themeToggler}
-          style={{ cursor: "pointer" }}
         >
           <rect width="256" height="256" fill="none"></rect>
           <path
@@ -31,16 +30,15 @@ const ToggleTheme = () => {
             strokeLinejoin="round"
             strokeWidth="16"
           ></path>
-        </svg>
+        </StyledThemeChanger>
       ) : (
-        <svg
+        <StyledThemeChanger
           xmlns="http://www.w3.org/2000/svg"
-          width="50"
-          height="50"
+          width="40"
+          height="40"
           fill="#fff"
           viewBox="0 0 256 256"
           onClick={themeToggler}
-          style={{ cursor: "pointer" }}
         >
           <rect width="256" height="256" fill="none"></rect>
           <circle
@@ -141,10 +139,14 @@ const ToggleTheme = () => {
             strokeLinejoin="round"
             strokeWidth="16"
           ></line>
-        </svg>
+        </StyledThemeChanger>
       )}
     </>
   );
 };
+
+const StyledThemeChanger = styled.svg`
+  cursor: pointer;
+`;
 
 export default ToggleTheme;

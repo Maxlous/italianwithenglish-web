@@ -35,6 +35,17 @@ const Article = styled.article`
   padding-bottom: 5em;
   border-bottom: 3px solid var(--redSalsa);
   align-items: flex-end;
+  margin-right: 10%;
+  margin-left: 10%;
+  @media screen and (max-width: 640px) {
+    padding: 2em 0;
+  }
+  @media screen and (max-height: 570px) {
+    padding: 0.5em 0;
+  }
+  @media screen and (max-height: 970px) {
+    padding: 1.5em 0;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -42,4 +53,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   max-width: 50%;
   align-items: center;
+  @media screen and (max-width: 1024px) {
+    align-self: center;
+  }
+  @media screen and (max-width: 640px) {
+    max-width: 100%;
+  }
 `;
