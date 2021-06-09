@@ -1,11 +1,12 @@
 import { useState, useRef } from "react";
 import words from "../assets/Words";
-import AnswerCounter from "./AnswerCounter";
-import PreviousSolution from "./PreviousSolution";
+import AnswerCounter from "../components/AnswerCounter";
+import PreviousSolution from "../components/PreviousSolution";
 import Flag from "react-flagpack";
 import styled from "styled-components";
 import { useStatistics } from "../hooks/useStatistics";
 import { useMultipleChoice } from "../hooks/useMultipleChoice";
+import ChangePathButton from "../components/ChangePathButton";
 
 const WordTest = () => {
   const correctAnswerContainer = useRef(null);
@@ -72,6 +73,7 @@ const WordTest = () => {
         averageSuccess={stats.average}
         pbColor={prevAnswerEffect}
       />
+      <ChangePathButton />
     </>
   );
 };

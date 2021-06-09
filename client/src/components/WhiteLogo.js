@@ -2,23 +2,25 @@ import styled from "styled-components";
 
 const WhiteLogo = () => {
   return (
-    <Wrapper>
+    <Container>
       <Image
         src="./images/whiteLogo.PNG"
         alt="white background, black text version of the logo"
       />
-    </Wrapper>
+    </Container>
   );
 };
 
 export default WhiteLogo;
 
-const Wrapper = styled.div`
-  position: absolute;
-  top: 70%;
-  left: 43%;
+const Container = styled.div`
+  display: grid;
+  @media screen and (max-width: 640px) {
+    margin-bottom: 2rem;
+  }
 `;
 const Image = styled.img`
   width: 18em;
   border-radius: 25px;
+  justify-self: center;
 `;
