@@ -19,16 +19,19 @@ const ChangePathButton = () => {
 export default ChangePathButton;
 
 const PathChanger = styled.button`
-  position: absolute;
-  left: 50%;
-  top: 90%;
-  transform: translate(-50%, -50%);
+  align-self: center;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
   color: ${(props) => props.theme.fontColor};
   font-weight: 800;
   border: 3px solid ${(props) => props.theme.fontColor};
   transition: 1s;
+  background: transparent;
   &:hover {
     border-radius: 1em;
     color: ${(props) => props.theme.fontColor};
+  }
+  @media screen and (max-height: 720px) {
+    margin-top: 2rem;
   }
 `;

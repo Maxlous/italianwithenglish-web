@@ -1,6 +1,7 @@
 import { GiCheckMark } from "react-icons/gi";
 import { FaTimes, FaSpinner } from "react-icons/fa";
 import styled from "styled-components";
+import ProgressBar from "./ProgressBar";
 
 const AnswerCounter = ({
   correctAnswer,
@@ -9,44 +10,21 @@ const AnswerCounter = ({
   averageSuccess,
   pbColor,
 }) => {
-  let progressbarBackground = {};
-
-  if (pbColor === "correct-answer") {
-    progressbarBackground = "#17C390";
-  }
-
-  if (pbColor === "wrong-answer") {
-    progressbarBackground = "#FE4D53";
-  }
-
   return (
     <Section>
       <Stats>
-        <p>
-          <GiCheckMark /> Correct: {correctAnswer}
-        </p>
-        <p>
-          <FaTimes /> Wrong: {wrongAnswer}
-        </p>
-        <p>
-          <FaSpinner /> Total : {answerSum}
-        </p>
+        <Divider>
+          <GiCheckMark />
+          <Text>Correct: {correctAnswer}</Text>
+        </Divider>
+        <Divider>
+          <FaTimes /> <Text>Wrong: {wrongAnswer}</Text>
+        </Divider>
+        <Divider>
+          <FaSpinner /> <Text>Total : {answerSum}</Text>
+        </Divider>
       </Stats>
-      <div className="progress" style={{ width: "50em", alignSelf: "center" }}>
-        <div
-          className="progress-bar progress-bar-striped"
-          role="progressbar"
-          style={{
-            width: `${averageSuccess}%`,
-            backgroundColor: `${progressbarBackground}`,
-          }}
-          aria-valuenow={averageSuccess}
-          aria-valuemin="0"
-          aria-valuemax="100"
-        >
-          {averageSuccess} %
-        </div>
-      </div>
+      <ProgressBar pbColor={pbColor} averageSuccess={averageSuccess} />
     </Section>
   );
 };
@@ -56,11 +34,30 @@ export default AnswerCounter;
 const Section = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   margin-top: 4rem;
+  width: 100%;
+  @media screen and (max-height: 720px) {
+    margin-top: 2rem;
+  }
 `;
 const Stats = styled.div`
-  align-self: center;
+  width: 50em;
   display: flex;
+  justify-content: space-around;
+  align-items: center;
   margin-bottom: 2rem;
+  @media screen and (max-width: 760px) {
+    width: 90%;
+  }
+`;
+
+const Divider = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const Text = styled.p`
+  margin: 0;
+  padding-left: 0.3rem;
 `;
