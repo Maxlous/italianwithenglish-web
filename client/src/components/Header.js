@@ -1,30 +1,58 @@
+import { useState } from "react";
 import ToggleTheme from "./ToggleTheme";
-import NavIcon from "./NavIcon";
-import { Link } from "react-router-dom";
+import HamburgerMenuIcon from "./HamburgerMenuIcon";
+import CloseMenuIcon from "./CloseMenuIcon";
 import styled from "styled-components";
+import MobileNav from "./MobileNav";
+import { Link } from "react-router-dom";
 
 const Header = () => {
+  const [mobileNavIcon, setMobileNavIcon] = useState("hamburger-icon");
+
+  const handleMobileNav = () => {
+    const mobileNav = document.querySelector("#mobileNav");
+    const panelStyles = window.getComputedStyle(mobileNav);
+    if (panelStyles.getPropertyValue("clip-path") === "circle(0% at 100% 0%)") {
+      mobileNav.style.clipPath = "circle(100% at 50% 50%)";
+      setMobileNavIcon("close-icon");
+    } else {
+      mobileNav.style.clipPath = "circle(0% at 100% 0%)";
+      setMobileNavIcon("hamburger-icon");
+    }
+  };
+
   return (
     <HeaderElement>
       <Nav>
         <ToggleTheme />
-        <StyledLink id="header-exercises" to="exercises">
-          Exercises
-        </StyledLink>
-        <StyledLink id="header-italian-with-english" to="/">
-          Italian with English
-        </StyledLink>
-        <StyledLink id="header-contact" to="/contact">
-          Contact
-        </StyledLink>
-        {window.innerWidth >= 640 ? (
-          <Link to="/">
-            <Logo src="./images/blackLogo.PNG" alt="black logo" />
-          </Link>
+        {window.innerWidth >= 480 ? (
+          <>
+            <StyledLink id="header-exercises" to="exercises">
+              Exercises
+            </StyledLink>
+            <StyledLink id="header-italian-with-english" to="/">
+              Italian with English
+            </StyledLink>
+            <StyledLink id="header-contact" to="/contact">
+              Contact
+            </StyledLink>
+            <LettersContainer>
+              <StyledLetterI>I</StyledLetterI>
+              <StyledLetterT>t</StyledLetterT>
+            </LettersContainer>
+          </>
         ) : (
-          <NavIcon />
+          <>
+            <MobileHomePageLink to="/">Italian with English</MobileHomePageLink>
+            {mobileNavIcon === "hamburger-icon" ? (
+              <HamburgerMenuIcon handleMobileNav={handleMobileNav} />
+            ) : (
+              <CloseMenuIcon handleMobileNav={handleMobileNav} />
+            )}
+          </>
         )}
       </Nav>
+      <MobileNav />
     </HeaderElement>
   );
 };
@@ -34,7 +62,6 @@ export default Header;
 const HeaderElement = styled.header`
   background: ${(props) => props.theme.headerBackground};
   height: 5vh;
-
   @media screen and (max-height: 570px) {
     height: 10vh;
   }
@@ -80,7 +107,26 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Logo = styled.img`
-  cursor: pointer;
-  width: 3rem;
+const MobileHomePageLink = styled(Link)`
+  text-decoration: none;
+  color: ${(props) => props.theme.navLink};
+  font-weight: 800;
+  font-size: 1.4rem;
+`;
+
+const LettersContainer = styled.div`
+  margin-right: 0.5rem;
+`;
+
+const StyledLetterI = styled.span`
+  text-decoration: none;
+  color: var(--caribbeanGreen);
+  font-weight: 800;
+  font-size: 1.5rem;
+`;
+const StyledLetterT = styled.span`
+  text-decoration: none;
+  color: var(--redSalsa);
+  font-weight: 800;
+  font-size: 1.4rem;
 `;

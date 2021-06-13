@@ -12,7 +12,12 @@ export default Illustration;
 
 const Image = styled.img`
   max-width: 35em;
-  max-height: 30em;
+  @media screen and (max-width: 1200px) {
+    width: 50vw;
+  }
+  @media screen and (max-width: 640px) {
+    width: 80vw;
+  }
 `;
 
 const Container = styled.div`

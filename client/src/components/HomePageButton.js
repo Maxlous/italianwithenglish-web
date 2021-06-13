@@ -24,4 +24,8 @@ const StyledLink = styled(Link)`
       var(--caribbeanGreen);
     color: ${(props) => props.theme.fontColor};
   }
+  @media screen and (max-width: 640px) {
+    font-size: 0.9rem;
+    width: 12rem;
+  }
 `;

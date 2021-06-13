@@ -61,5 +61,5 @@ const SubHeading = styled.h2`
   margin-top: 2.5rem;
   text-decoration: underline var(--caribbeanGreen);
   text-decoration-thickness: 8px;
-  text-underline-offset: 5px;
+  text-underline-offset: 10px;
 `;

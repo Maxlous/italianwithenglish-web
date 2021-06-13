@@ -79,16 +79,13 @@ const Home = () => {
 
 export default Home;
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
 const Section = styled.section`
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr;
+  @media screen and (max-width: 414px) {
+    margin-top: 0.8rem;
+  }
   @media screen and (max-width: 900px) {
     .first {
       grid-area: firstText;
@@ -128,10 +125,17 @@ const Section = styled.section`
   }
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 0.8rem;
+`;
+
 const GreenSpan = styled.span`
   text-decoration: underline var(--caribbeanGreen);
   text-decoration-thickness: 3px;
-  text-underline-offset: 3px;
+  text-underline-offset: 5px;
 `;
 
 const Header = styled.h1`
@@ -144,4 +148,7 @@ const SubHeader = styled.h2`
 
 const Paragraph = styled.p`
   text-align: center;
+  @media screen and (max-width: 640px) {
+    font-size: 0.9em;
+  }
 `;
