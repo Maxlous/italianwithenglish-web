@@ -20,7 +20,7 @@ export default ChangePathButton;
 
 const PathChanger = styled.button`
   align-self: center;
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   margin-bottom: 1rem;
   color: ${(props) => props.theme.fontColor};
   font-weight: 800;

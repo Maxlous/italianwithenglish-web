@@ -27,7 +27,7 @@ const Header = () => {
         <ToggleTheme />
         {window.innerWidth >= 480 ? (
           <>
-            <StyledLink id="header-exercises" to="exercises">
+            <StyledLink id="header-exercises" to="/exercises">
               Exercises
             </StyledLink>
             <StyledLink id="header-italian-with-english" to="/">
@@ -37,8 +37,8 @@ const Header = () => {
               Contact
             </StyledLink>
             <LettersContainer>
-              <StyledLetterI>I</StyledLetterI>
-              <StyledLetterT>t</StyledLetterT>
+              <StyledLetterI>I</StyledLetterI> <StyledLetterW>w</StyledLetterW>{" "}
+              <StyledLetterE>E</StyledLetterE>
             </LettersContainer>
           </>
         ) : (
@@ -124,9 +124,17 @@ const StyledLetterI = styled.span`
   font-weight: 800;
   font-size: 1.5rem;
 `;
-const StyledLetterT = styled.span`
+
+const StyledLetterW = styled.span`
+  text-decoration: none;
+  color: ${(props) => props.theme.navLink};
+  font-weight: 800;
+  font-size: 1.4rem;
+`;
+
+const StyledLetterE = styled.span`
   text-decoration: none;
   color: var(--redSalsa);
   font-weight: 800;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 `;

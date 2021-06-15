@@ -37,14 +37,24 @@ export const useStatistics = (localStorageKey) => {
   };
 
   const handleStats = (param) => {
-    if (param) {
+    if (param === "reset") {
+      setStatistics({
+        ...statistics,
+        correctAnswer: 0,
+        wrongAnswer: 0,
+        answerSum: 0,
+      });
+      setHelper(!helper);
+    }
+    if (param === "true") {
       setStatistics({
         ...statistics,
         correctAnswer: statistics.correctAnswer + 1,
         answerSum: statistics.answerSum + 1,
       });
       setHelper(!helper);
-    } else {
+    }
+    if (param === "false") {
       setStatistics({
         ...statistics,
         wrongAnswer: statistics.wrongAnswer + 1,

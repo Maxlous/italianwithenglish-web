@@ -8,6 +8,7 @@ import { useStatistics } from "../hooks/useStatistics";
 import { useMultipleChoice } from "../hooks/useMultipleChoice";
 import Flag from "react-flagpack";
 import styled from "styled-components";
+import ResetStats from "../components/ResetStats";
 
 const WordTest = () => {
   const correctAnswerContainer = useRef(null);
@@ -40,12 +41,16 @@ const WordTest = () => {
     setItalian(correctItalianValue);
     setEnglish(correctEnglishValue(correctItalianValue));
     if (e.target.innerText === correctEnglishValue(correctItalianValue)) {
-      setStats(true);
+      setStats("true");
       setPrevAnswerEffect("correct-answer");
     } else {
-      setStats(false);
+      setStats("false");
       setPrevAnswerEffect("wrong-answer");
     }
+  };
+
+  const handleReset = () => {
+    setStats("reset");
   };
 
   return (
@@ -79,6 +84,7 @@ const WordTest = () => {
           averageSuccess={stats.average}
           pbColor={prevAnswerEffect}
         />
+        <ResetStats handleReset={handleReset} />
         <ChangePathButton />
       </Section>
     </Main>

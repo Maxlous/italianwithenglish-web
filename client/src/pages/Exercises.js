@@ -9,12 +9,12 @@ const Exercises = () => {
       <Heading>What would you like to study?</Heading>
       <Wrapper>
         <PathContainer>
-          <SubHeading>Go with words..</SubHeading>
+          <SubHeading>play with awesome words...</SubHeading>
           <IndicatorArrows />
           <Button path="words" />
         </PathContainer>
         <PathContainer>
-          <SubHeading>Go with expressions..</SubHeading>
+          <SubHeading>tackle with cool expressions..</SubHeading>
           <IndicatorArrows />
           <Button path="expressions" />
         </PathContainer>
