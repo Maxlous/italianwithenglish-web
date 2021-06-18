@@ -62,4 +62,7 @@ const SubHeading = styled.h2`
   text-decoration: underline var(--caribbeanGreen);
   text-decoration-thickness: 8px;
   text-underline-offset: 10px;
+  @media screen and (max-width: 370px) {
+    font-size: 20px;
+  }
 `;

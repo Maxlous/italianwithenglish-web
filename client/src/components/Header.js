@@ -62,7 +62,7 @@ export default Header;
 const HeaderElement = styled.header`
   background: ${(props) => props.theme.headerBackground};
   height: 5vh;
-  @media screen and (max-height: 570px) {
+  @media screen and (max-height: 740px) {
     height: 10vh;
   }
 `;
@@ -72,7 +72,7 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   height: 5vh;
-  @media screen and (max-height: 570px) {
+  @media screen and (max-height: 740px) {
     height: 10vh;
   }
 `;
