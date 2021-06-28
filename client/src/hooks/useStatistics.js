@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocalStorage } from "./useLocalStorage";
+import { updateLocalStorage} from "../utils/helpers/updateLocalStorage";
 
 export const useStatistics = (localStorageKey) => {
   const INITIAL_STATE = {
@@ -8,23 +8,15 @@ export const useStatistics = (localStorageKey) => {
     answerSum: 0,
     average: 0,
   };
-  const [storage, setStorage] = useLocalStorage(localStorageKey, INITIAL_STATE);
-  const [statistics, setStatistics] = useState(storage);
-  //this helper state is created to trigger useEffect call so we can access to up to date version of statistics state for calculating average
-  const [helper, setHelper] = useState(false);
+
+  const [statistics, setStatistics] = useState(() => {
+    const storage = localStorage.getItem(localStorageKey);
+    return storage ? JSON.parse(storage) : INITIAL_STATE
+  })
 
   useEffect(() => {
-    setStatistics({
-      ...statistics,
-      average: percentage(
-        statistics.answerSum,
-        statistics.correctAnswer,
-        statistics.wrongAnswer
-      ),
-    });
-    setStorage(statistics);
-    //eslint-disable-next-line
-  }, [helper]);
+    updateLocalStorage(localStorageKey, statistics);
+  });
 
   const percentage = (total, correct, wrong) => {
     if (correct === 0) {
@@ -43,24 +35,32 @@ export const useStatistics = (localStorageKey) => {
         correctAnswer: 0,
         wrongAnswer: 0,
         answerSum: 0,
+        average: 0
       });
-      setHelper(!helper);
     }
     if (param === "true") {
       setStatistics({
         ...statistics,
         correctAnswer: statistics.correctAnswer + 1,
         answerSum: statistics.answerSum + 1,
+        average: percentage(
+          statistics.answerSum + 1,
+          statistics.correctAnswer + 1,
+          statistics.wrongAnswer
+        )
       });
-      setHelper(!helper);
     }
     if (param === "false") {
       setStatistics({
         ...statistics,
         wrongAnswer: statistics.wrongAnswer + 1,
         answerSum: statistics.answerSum + 1,
+        average: percentage(
+          statistics.answerSum + 1,
+          statistics.correctAnswer,
+          statistics.wrongAnswer + 1,
+        )
       });
-      setHelper(!helper);
     }
   };
 
