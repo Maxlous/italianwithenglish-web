@@ -11,7 +11,11 @@
   "dependencies": {
     "next": "11.0.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "bootstrap": "^5.0.0-beta3",
+    "react-flagpack": "^0.1.1",
+    "react-icons": "^4.2.0",
+    "styled-components": "^5.2.3"
   },
   "devDependencies": {
     "eslint": "7.31.0",
