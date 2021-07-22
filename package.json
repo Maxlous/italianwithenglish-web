@@ -12,7 +12,6 @@
     "bootstrap": "^5.0.0-beta3",
     "next": "11.0.1",
     "next-images": "^1.8.1",
-    "next-transpile-modules": "^8.0.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-flagpack": "^0.1.1",
