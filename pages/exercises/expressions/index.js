@@ -6,9 +6,12 @@ import ChangePathButton from "../../../components/ChangePathButton";
 import TestButton from "../../../components/TestButton";
 import { useStatistics } from "../../../hooks/useStatistics";
 import { useMultipleChoice } from "../../../hooks/useMultipleChoice";
-import Flag from "react-flagpack";
 import styled from "styled-components";
 import ResetStats from "../../../components/ResetStats";
+import dynamic from "next/dynamic";
+import Layout from "../../../components/Layout";
+
+const Flag = dynamic(() => import("react-flagpack"), { ssr: false });
 
 const ExpressionTest = () => {
   const correctAnswerContainer = useRef(null);
@@ -54,46 +57,48 @@ const ExpressionTest = () => {
   };
 
   return (
-    <Main>
-      <Article>
-        <H4>
-          Choose the correct translation for given <span>expression!</span>
-        </H4>
-        <Question>
-          <Flag code="IT" />
-          <H5 ref={correctAnswerContainer}>{question}</H5>
-        </Question>
-        <ButtonsContainer>
-          <TestButton handleAnswer={handleAnswer} value={firstOption} />
-          <TestButton handleAnswer={handleAnswer} value={secondOption} />
-          <TestButton handleAnswer={handleAnswer} value={thirdOption} />
-          <TestButton handleAnswer={handleAnswer} value={fourthOption} />
-          <TestButton handleAnswer={handleAnswer} value={fifthOption} />
-        </ButtonsContainer>
-      </Article>
-      <Section>
-        <PreviousSolution
-          italian={italian}
-          english={english}
-          prevAnswerEffect={prevAnswerEffect}
-        />
-        <AnswerCounter
-          correctAnswer={stats.correctAnswer}
-          wrongAnswer={stats.wrongAnswer}
-          answerSum={stats.answerSum}
-          averageSuccess={stats.average}
-          pbColor={prevAnswerEffect}
-        />
-        <ResetStats handleReset={handleReset} />
-        <ChangePathButton />
-      </Section>
-    </Main>
+    <Layout>
+      <Container>
+        <Article>
+          <H4>
+            Choose the correct translation for given <span>expression!</span>
+          </H4>
+          <Question>
+            <Flag code="IT" />
+            <H5 ref={correctAnswerContainer}>{question}</H5>
+          </Question>
+          <ButtonsContainer>
+            <TestButton handleAnswer={handleAnswer} value={firstOption} />
+            <TestButton handleAnswer={handleAnswer} value={secondOption} />
+            <TestButton handleAnswer={handleAnswer} value={thirdOption} />
+            <TestButton handleAnswer={handleAnswer} value={fourthOption} />
+            <TestButton handleAnswer={handleAnswer} value={fifthOption} />
+          </ButtonsContainer>
+        </Article>
+        <Section>
+          <PreviousSolution
+            italian={italian}
+            english={english}
+            prevAnswerEffect={prevAnswerEffect}
+          />
+          <AnswerCounter
+            correctAnswer={stats.correctAnswer}
+            wrongAnswer={stats.wrongAnswer}
+            answerSum={stats.answerSum}
+            averageSuccess={stats.average}
+            pbColor={prevAnswerEffect}
+          />
+          <ResetStats handleReset={handleReset} />
+          <ChangePathButton />
+        </Section>
+      </Container>
+    </Layout>
   );
 };
 
 export default ExpressionTest;
 
-const Main = styled.main`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

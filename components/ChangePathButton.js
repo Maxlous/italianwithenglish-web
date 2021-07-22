@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { CgArrowsExchangeAlt } from "react-icons/cg";
-import { useHistory } from "react-router-dom";
+import { useRouter } from "next/router";
 
 const ChangePathButton = () => {
-  const history = useHistory();
+  const router = useRouter();
   const changePath = () => {
-    history.push("/exercises");
+    router.push("/exercises");
   };
 
   return (

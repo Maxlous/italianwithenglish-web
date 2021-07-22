@@ -4,7 +4,7 @@ import HamburgerMenuIcon from "./HamburgerMenuIcon";
 import CloseMenuIcon from "./CloseMenuIcon";
 import styled from "styled-components";
 import MobileNav from "./MobileNav";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const Header = () => {
   const [mobileNavIcon, setMobileNavIcon] = useState("hamburger-icon");
@@ -25,17 +25,19 @@ const Header = () => {
     <HeaderElement>
       <Nav>
         <ToggleTheme />
-        {window.innerWidth >= 480 ? (
+        {typeof window !== "undefined" && window.innerWidth >= 480 ? (
           <>
-            <StyledLink id="header-exercises" to="/exercises">
-              Exercises
-            </StyledLink>
-            <StyledLink id="header-italian-with-english" to="/">
-              Italian with English
-            </StyledLink>
-            <StyledLink id="header-contact" to="/contact">
-              Contact
-            </StyledLink>
+            <Link href="/exercises" passHref>
+              <StyledLink id="header-exercises">Exercises</StyledLink>
+            </Link>
+            <Link href="/" passHref>
+              <StyledLink id="header-italian-with-english">
+                Italian with English
+              </StyledLink>
+            </Link>
+            <Link href="/contact" passHref>
+              <StyledLink id="header-contact">Contact</StyledLink>
+            </Link>
             <LettersContainer>
               <StyledLetterI>I</StyledLetterI> <StyledLetterW>w</StyledLetterW>{" "}
               <StyledLetterE>E</StyledLetterE>
@@ -43,7 +45,9 @@ const Header = () => {
           </>
         ) : (
           <>
-            <MobileHomePageLink to="/">Italian with English</MobileHomePageLink>
+            <Link href="/" passHref>
+              <MobileHomePageLink>Italian with English</MobileHomePageLink>
+            </Link>
             {mobileNavIcon === "hamburger-icon" ? (
               <HamburgerMenuIcon handleMobileNav={handleMobileNav} />
             ) : (
@@ -77,7 +81,7 @@ const Nav = styled.nav`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
   text-decoration: none;
   color: ${(props) => props.theme.navLink};
   font-weight: 800;
@@ -107,7 +111,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const MobileHomePageLink = styled(Link)`
+const MobileHomePageLink = styled.a`
   text-decoration: none;
   color: ${(props) => props.theme.navLink};
   font-weight: 800;

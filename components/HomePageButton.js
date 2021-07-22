@@ -1,13 +1,17 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const Button = () => {
-  return <StyledLink to="./exercises">Start your journey</StyledLink>;
+  return (
+    <Link href="/exercises" passHref>
+      <StyledLink>Start your journey</StyledLink>
+    </Link>
+  );
 };
 
 export default Button;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
   background-color: transparent;
   padding: 10px 20px;
   border-radius: 10px;

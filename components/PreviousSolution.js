@@ -1,6 +1,8 @@
-import Flag from "react-flagpack";
 import { AiOutlineRollback } from "react-icons/ai";
 import styled from "styled-components";
+import dynamic from "next/dynamic";
+
+const Flag = dynamic(() => import("react-flagpack"), { ssr: false });
 
 const PreviousSolution = ({ italian, english, prevAnswerEffect }) => {
   return (

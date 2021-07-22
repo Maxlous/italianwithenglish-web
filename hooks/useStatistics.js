@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { updateLocalStorage} from "../utils/helpers/updateLocalStorage";
+import { updateLocalStorage } from "../utils/helpers/updateLocalStorage";
 
 export const useStatistics = (localStorageKey) => {
   const INITIAL_STATE = {
@@ -10,9 +10,13 @@ export const useStatistics = (localStorageKey) => {
   };
 
   const [statistics, setStatistics] = useState(() => {
-    const storage = localStorage.getItem(localStorageKey);
-    return storage ? JSON.parse(storage) : INITIAL_STATE
-  })
+    if (typeof window !== "undefined") {
+      const storage = localStorage.getItem(localStorageKey);
+      return storage ? JSON.parse(storage) : INITIAL_STATE;
+    } else {
+      return {};
+    }
+  });
 
   useEffect(() => {
     updateLocalStorage(localStorageKey, statistics);
@@ -35,7 +39,7 @@ export const useStatistics = (localStorageKey) => {
         correctAnswer: 0,
         wrongAnswer: 0,
         answerSum: 0,
-        average: 0
+        average: 0,
       });
     }
     if (param === "true") {
@@ -47,7 +51,7 @@ export const useStatistics = (localStorageKey) => {
           statistics.answerSum + 1,
           statistics.correctAnswer + 1,
           statistics.wrongAnswer
-        )
+        ),
       });
     }
     if (param === "false") {
@@ -58,8 +62,8 @@ export const useStatistics = (localStorageKey) => {
         average: percentage(
           statistics.answerSum + 1,
           statistics.correctAnswer,
-          statistics.wrongAnswer + 1,
-        )
+          statistics.wrongAnswer + 1
+        ),
       });
     }
   };

@@ -1,18 +1,20 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import styled from "styled-components";
 
 const MobileNav = () => {
   return (
     <MobileNavContainer id="mobileNav">
-      <StyledLink id="header-exercises" to="exercises">
-        Exercises
-      </StyledLink>
-      <StyledLink id="header-italian-with-english" to="/">
-        Italian with English
-      </StyledLink>
-      <StyledLink id="header-contact" to="/contact">
-        Contact
-      </StyledLink>
+      <Link href="/exercises" passHref>
+        <StyledLink id="header-exercises">Exercises</StyledLink>
+      </Link>
+      <Link href="/" passHref>
+        <StyledLink id="header-italian-with-english">
+          Italian with English
+        </StyledLink>
+      </Link>
+      <Link href="/contact" passHref>
+        <StyledLink id="header-contact">Contact</StyledLink>
+      </Link>
     </MobileNavContainer>
   );
 };
@@ -30,7 +32,7 @@ const MobileNavContainer = styled.div`
   background: ${(props) => props.theme.headerBackground};
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
   text-decoration: none;
   color: ${(props) => props.theme.navLink};
   font-size: 1.5rem;

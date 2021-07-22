@@ -2,31 +2,34 @@ import styled from "styled-components";
 import WhiteLogo from "../../components/WhiteLogo";
 import Button from "../../components/PathsButton";
 import IndicatorArrows from "../../components/IndicatorArrows";
+import Layout from "../../components/Layout";
 
 const Exercises = () => {
   return (
-    <Main>
-      <Heading>What would you like to study?</Heading>
-      <Wrapper>
-        <PathContainer>
-          <SubHeading>play with awesome words...</SubHeading>
-          <IndicatorArrows />
-          <Button path="words" />
-        </PathContainer>
-        <PathContainer>
-          <SubHeading>tackle with cool expressions..</SubHeading>
-          <IndicatorArrows />
-          <Button path="expressions" />
-        </PathContainer>
-      </Wrapper>
-      <WhiteLogo />
-    </Main>
+    <Layout>
+      <Container>
+        <Heading>What would you like to study?</Heading>
+        <Wrapper>
+          <PathContainer>
+            <SubHeading>play with awesome words...</SubHeading>
+            <IndicatorArrows />
+            <Button path="words" />
+          </PathContainer>
+          <PathContainer>
+            <SubHeading>tackle with cool expressions..</SubHeading>
+            <IndicatorArrows />
+            <Button path="expressions" />
+          </PathContainer>
+        </Wrapper>
+        <WhiteLogo />
+      </Container>
+    </Layout>
   );
 };
 
 export default Exercises;
 
-const Main = styled.main`
+const Container = styled.article`
   margin-top: 20vh;
   @media screen and (max-width: 640px) {
     margin-top: 5vh;
@@ -44,7 +47,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const PathContainer = styled.div`
+const PathContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;

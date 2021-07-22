@@ -1,19 +1,22 @@
 import ContactMe from "../components/ContactMe";
 import ForDevelopers from "../components/ForDevelopers";
 import styled from "styled-components";
+import Layout from "../components/Layout";
 
 const Contact = () => {
   return (
-    <Main>
-      <ContactMe />
-      <ForDevelopers />
-    </Main>
+    <Layout>
+      <Container>
+        <ContactMe />
+        <ForDevelopers />
+      </Container>
+    </Layout>
   );
 };
 
 export default Contact;
 
-const Main = styled.main`
+const Container = styled.article`
   height: 95vh;
   display: flex;
   flex-direction: column;

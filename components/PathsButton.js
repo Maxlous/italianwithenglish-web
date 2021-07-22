@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import { useRouter } from "next/router";
 
 const Button = ({ path }) => {
-  const history = useHistory();
+  const router = useRouter();
   const pathHandler = () => {
-    history.push(`/exercises/${path}`);
+    router.push(`/exercises/${path}`);
   };
 
   return (

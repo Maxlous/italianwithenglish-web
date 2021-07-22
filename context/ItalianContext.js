@@ -10,8 +10,10 @@ const Italian = ({ children }) => {
   // const [wordsArray, setWordsArray] = useState([]);
   // const [expressionsArray, setExpressionsArray] = useState([]);
   const [theme, setTheme] = useState(() => {
-    const themeStorage = localStorage.getItem("theme");
-    return themeStorage ? JSON.parse(themeStorage) : "dark";
+    if (typeof window !== "undefined") {
+      const themeStorage = localStorage.getItem("theme");
+      return themeStorage ? JSON.parse(themeStorage) : "dark";
+    }
   });
 
   // const fetchWords = async () => {
