@@ -2,7 +2,6 @@ import { useState, useRef } from "react";
 import expressions from "../../../assets/Expressions";
 import AnswerCounter from "../../../components/AnswerCounter";
 import PreviousSolution from "../../../components/PreviousSolution";
-import ChangePathButton from "../../../components/ChangePathButton";
 import TestButton from "../../../components/TestButton";
 import { useStatistics } from "../../../hooks/useStatistics";
 import { useMultipleChoice } from "../../../hooks/useMultipleChoice";
@@ -12,6 +11,10 @@ import dynamic from "next/dynamic";
 import Layout from "../../../components/Layout";
 
 const Flag = dynamic(() => import("react-flagpack"), { ssr: false });
+const ChangePathButton = dynamic(
+  () => import("../../../components/ChangePathButton"),
+  { ssr: false }
+);
 
 const ExpressionTest = () => {
   const correctAnswerContainer = useRef(null);

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "babel-preset-next": "^1.4.0",
     "bootstrap": "^5.0.0-beta3",
     "next": "11.0.1",
     "next-images": "^1.8.1",
