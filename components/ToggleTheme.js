@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { ItalianContext } from "../context/ItalianContext";
+import ThemeContext from "../context/ThemeContext";
 import styled from "styled-components";
 
 const ToggleTheme = () => {
-  const { theme, setTheme } = useContext(ItalianContext);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   const themeToggler = () => {
     const currentTheme = theme === "light" ? "dark" : "light";

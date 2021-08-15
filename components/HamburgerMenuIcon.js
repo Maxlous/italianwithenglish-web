@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { ItalianContext } from "../context/ItalianContext";
+import ThemeContext from "../context/ThemeContext";
 import styled from "styled-components";
 
 const HamburgerMenuIcon = ({ handleMobileNav }) => {
-  const { theme } = useContext(ItalianContext);
+  const { theme } = useContext(ThemeContext);
 
   return theme === "dark" ? (
     <StyledNavIcon

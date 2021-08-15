@@ -1,6 +1,7 @@
-import Italian from "../context/ItalianContext";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { ThemeProvider } from "../context/ThemeContext";
+import { AuthProvider } from "../context/AuthContext";
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -9,9 +10,11 @@ function MyApp({ Component, pageProps }) {
       : null;
   }, []);
   return (
-    <Italian>
-      <Component {...pageProps} />
-    </Italian>
+    <AuthProvider>
+      <ThemeProvider>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
 
