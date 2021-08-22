@@ -1,16 +1,16 @@
 import cookie from "cookie";
 import { API_URL } from "../../config/index";
 
-const login = async (req, res) => {
+const register = async (req, res) => {
   if (req.method === "POST") {
-    const { identifier, password } = req.body;
+    const { username, email, password } = req.body;
 
-    const strapiRes = await fetch(`${API_URL}/auth/local`, {
+    const strapiRes = await fetch(`${API_URL}/auth/local/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ identifier, password }),
+      body: JSON.stringify({ username, email, password }),
     });
     const data = await strapiRes.json();
 
@@ -38,4 +38,4 @@ const login = async (req, res) => {
   }
 };
 
-export default login;
+export default register;
