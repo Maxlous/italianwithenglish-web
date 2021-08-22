@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const checkUserLoggedIn = async (user) => {
+  const checkUserLoggedIn = async () => {
     const res = await fetch(`${NEXT_URL}/api/user`);
     const data = await res.json();
 

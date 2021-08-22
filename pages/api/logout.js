@@ -1,5 +1,4 @@
 import cookie from "cookie";
-import { API_URL } from "../../config/index";
 
 const logout = async (req, res) => {
   if (req.method === "POST") {
