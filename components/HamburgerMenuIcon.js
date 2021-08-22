@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import ThemeContext from "../context/ThemeContext";
+import useTheme from "../hooks/useTheme";
 import styled from "styled-components";
 
 const HamburgerMenuIcon = ({ handleMobileNav }) => {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
 
   return theme === "dark" ? (
     <StyledNavIcon

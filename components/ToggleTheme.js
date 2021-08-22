@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import ThemeContext from "../context/ThemeContext";
+import useTheme from "../hooks/useTheme";
 import styled from "styled-components";
 
 const ToggleTheme = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme, setTheme } = useTheme();
 
   const themeToggler = () => {
     const currentTheme = theme === "light" ? "dark" : "light";
