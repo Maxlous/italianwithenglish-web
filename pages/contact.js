@@ -1,7 +1,7 @@
-import ContactMe from "../components/ContactMe";
-import ForDevelopers from "../components/ForDevelopers";
+import ContactMe from "@/components/ContactMe";
+import ForDevelopers from "@/components/ForDevelopers";
 import styled from "styled-components";
-import Layout from "../components/Layout";
+import Layout from "@/components/Layout";
 
 const Contact = () => {
   return (

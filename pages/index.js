@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
-import Illustration from "../components/Illustration";
+import Illustration from "@/components/Illustration";
 import styled from "styled-components";
-import Layout from "../components/Layout";
+import Layout from "@/components/Layout";
 import dynamic from "next/dynamic";
 
 const Button = dynamic(() => import("../components/HomePageButton"), {

@@ -1,18 +1,18 @@
 import { useState, useRef } from "react";
 import expressions from "../../../assets/Expressions";
-import AnswerCounter from "../../../components/AnswerCounter";
-import PreviousSolution from "../../../components/PreviousSolution";
-import TestButton from "../../../components/TestButton";
+import AnswerCounter from "@/components/AnswerCounter";
+import PreviousSolution from "@/components/PreviousSolution";
+import TestButton from "@/components/TestButton";
 import { useStatistics } from "../../../hooks/useStatistics";
 import { useMultipleChoice } from "../../../hooks/useMultipleChoice";
 import styled from "styled-components";
-import ResetStats from "../../../components/ResetStats";
+import ResetStats from "@/components/ResetStats";
 import dynamic from "next/dynamic";
-import Layout from "../../../components/Layout";
+import Layout from "@/components/Layout";
 
 const Flag = dynamic(() => import("react-flagpack"), { ssr: false });
 const ChangePathButton = dynamic(
-  () => import("../../../components/ChangePathButton"),
+  () => import("@/components/ChangePathButton"),
   { ssr: false }
 );
 

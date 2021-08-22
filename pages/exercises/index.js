@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import WhiteLogo from "../../components/WhiteLogo";
-import Button from "../../components/PathsButton";
-import IndicatorArrows from "../../components/IndicatorArrows";
-import Layout from "../../components/Layout";
+import WhiteLogo from "@/components/WhiteLogo";
+import Button from "@/components/PathsButton";
+import IndicatorArrows from "@/components/IndicatorArrows";
+import Layout from "@/components/Layout";
 
 const Exercises = () => {
   return (
