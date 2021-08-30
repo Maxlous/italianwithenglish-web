@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import words from "../../../assets/Words";
 import AnswerCounter from "@/components/AnswerCounter";
 import PreviousSolution from "@/components/PreviousSolution";
-import TestButton from "@/components/TestButton";
+import TestButton from "@/components/buttons/TestButton";
 import { useStatistics } from "../../../hooks/useStatistics";
 import { useMultipleChoice } from "../../../hooks/useMultipleChoice";
 import styled from "styled-components";
@@ -12,7 +12,7 @@ import Layout from "@/components/Layout";
 
 const Flag = dynamic(() => import("react-flagpack"), { ssr: false });
 const ChangePathButton = dynamic(
-  () => import("../../../components/ChangePathButton"),
+  () => import("../../../components/buttons/ChangePathButton"),
   { ssr: false }
 );
 

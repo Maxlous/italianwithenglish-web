@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Layout from "@/components/Layout";
 import dynamic from "next/dynamic";
 
-const Button = dynamic(() => import("../components/HomePageButton"), {
+const Button = dynamic(() => import("../components/buttons/HomePageButton"), {
   ssr: false,
 });
 

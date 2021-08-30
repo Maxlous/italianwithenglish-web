@@ -1,6 +1,7 @@
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import Button from "@/components/PushableButton";
+import styled from "styled-components";
+import Button from "@/components/buttons/PushableButton";
 
 const Register = () => {
   const handleRegister = () => {};
@@ -24,7 +25,7 @@ const Register = () => {
           .required("Create a password to enter the world of Italian words")
           .matches(
             /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-            "Password should contain 8 characters, one uppercase and lowercase character, a number and a special character"
+            "Password should contain at least 8 characters, one uppercase and lowercase character, a number, and a special character"
           ),
         passwordConfirmation: Yup.string().when("password", {
           is: (val) => (val && val.length > 0 ? true : false),
@@ -36,27 +37,86 @@ const Register = () => {
       })}
       onSubmit={handleRegister}
     >
-      <Form>
-        <label htmlFor="username">Username</label>
-        <Field type="text" name="username" />
-        <ErrorMessage name="username" />
-
-        <label htmlFor="email">Email</label>
-        <Field type="email" name="email" />
-        <ErrorMessage name="email" />
-
-        <label htmlFor="password">Password</label>
-        <Field type="password" name="password" />
-        <ErrorMessage name="password" />
-
-        <label htmlFor="passwordConfirmation">Password Confirmation</label>
-        <Field type="password" name="passwordConfirmation" />
-        <ErrorMessage name="passwordConfirmation" />
-
-        <Button type="submit">register</Button>
-      </Form>
+      <StyledForm>
+        <Title>SignUp</Title>
+        <Divider>
+          <Label htmlFor="username">Username</Label>
+          <Input type="text" name="username" />
+          <ErrorMessage name="username" />
+        </Divider>
+        <Divider>
+          <Label htmlFor="email">Email</Label>
+          <Input type="email" name="email" />
+          <ErrorMessage name="email" />
+        </Divider>
+        <Divider>
+          <Label htmlFor="password">Password</Label>
+          <Input type="password" name="password" />
+          <ErrorMessage name="password" />
+        </Divider>
+        <Divider>
+          <Label htmlFor="passwordConfirmation">Password Confirmation</Label>
+          <Input type="password" name="passwordConfirmation" />
+          <ErrorMessage name="passwordConfirmation" />
+        </Divider>
+        <ButtonWrapper>
+          <Button type="submit">register</Button>
+        </ButtonWrapper>
+      </StyledForm>
     </Formik>
   );
 };
 
 export default Register;
+
+const StyledForm = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+`;
+
+const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-bottom: 20px;
+  color: var(--redSalsa);
+`;
+
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-top: 20px;
+`;
+
+const Title = styled.h2`
+  text-align: center;
+  margin-bottom: 20px;
+  color: ${(props) => props.theme.fontColor};
+  text-decoration: underline var(--caribbeanGreen);
+  text-decoration-thickness: 5px;
+  text-underline-offset: 7px;
+`;
+
+const Input = styled(Field)`
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 0 1pt grey;
+  height: 35px;
+  color: ${(props) => props.theme.formInput};
+  margin-bottom: 8px;
+  padding-left: 10px;
+  &:focus {
+    box-shadow: 0 0 3pt 2pt ${(props) => props.theme.fontColor};
+  }
+`;
+
+const Label = styled.label`
+  margin-bottom: 15px;
+  text-decoration: underline var(--caribbeanGreen);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+`;

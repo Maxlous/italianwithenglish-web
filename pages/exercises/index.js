@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import WhiteLogo from "@/components/WhiteLogo";
-import Button from "@/components/PushableButton";
+import Button from "@/components/buttons/PushableButton";
 import IndicatorArrows from "@/components/IndicatorArrows";
 import Layout from "@/components/Layout";
 

@@ -3,6 +3,7 @@ export const lightTheme = {
   fontColor: "#282c36",
   navLink: "#fef9ef",
   headerBackground: "#282c36",
+  formInput: "#282c36",
 };
 
 export const darkTheme = {
@@ -10,4 +11,5 @@ export const darkTheme = {
   fontColor: "#fef9ef",
   navLink: "#282c36",
   headerBackground: "#fff",
+  formInput: "#282c36",
 };
