@@ -1,4 +1,4 @@
-import useTheme from "../hooks/useTheme";
+import useTheme from "@/hooks/useTheme";
 import styled from "styled-components";
 
 const CloseMenuIcon = ({ handleMobileNav }) => {

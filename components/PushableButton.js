@@ -1,17 +1,17 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
-const Button = ({ path }) => {
+const Button = ({ path = null, children, ...props }) => {
   const router = useRouter();
   const pathHandler = () => {
     router.push(`/exercises/${path}`);
   };
 
   return (
-    <Pushable onClick={pathHandler}>
+    <Pushable {...props} onClick={path && pathHandler}>
       <Shadow></Shadow>
       <Edge></Edge>
-      <Front>GO</Front>
+      <Front>{children}</Front>
     </Pushable>
   );
 };

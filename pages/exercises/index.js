@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import WhiteLogo from "@/components/WhiteLogo";
-import Button from "@/components/PathsButton";
+import Button from "@/components/PushableButton";
 import IndicatorArrows from "@/components/IndicatorArrows";
 import Layout from "@/components/Layout";
 
@@ -13,12 +13,12 @@ const Exercises = () => {
           <PathContainer>
             <SubHeading>play with awesome words...</SubHeading>
             <IndicatorArrows />
-            <Button path="words" />
+            <Button path="words">GO</Button>
           </PathContainer>
           <PathContainer>
             <SubHeading>tackle with cool expressions..</SubHeading>
             <IndicatorArrows />
-            <Button path="expressions" />
+            <Button path="expressions">GO</Button>
           </PathContainer>
         </Wrapper>
         <WhiteLogo />
