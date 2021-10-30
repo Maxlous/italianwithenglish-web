@@ -1,5 +1,6 @@
 import cookie from "cookie";
 import { API_URL } from "../../config/index";
+import { toast } from "react-toastify";
 
 const login = async (req, res) => {
   if (req.method === "POST") {

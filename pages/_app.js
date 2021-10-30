@@ -1,7 +1,9 @@
 import { useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { ThemeProvider } from "../context/ThemeContext";
 import { AuthProvider } from "../context/AuthContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
@@ -13,6 +15,7 @@ function MyApp({ Component, pageProps }) {
     <AuthProvider>
       <ThemeProvider>
         <Component {...pageProps} />
+        <ToastContainer theme="dark" />
       </ThemeProvider>
     </AuthProvider>
   );

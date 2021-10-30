@@ -5,10 +5,11 @@ import CloseMenuIcon from "./CloseMenuIcon";
 import styled from "styled-components";
 import MobileNav from "./MobileNav";
 import Link from "next/link";
+import useAuth from "@/hooks/useAuth";
 
 const Header = () => {
   const [mobileNavIcon, setMobileNavIcon] = useState("hamburger-icon");
-
+  const { user, logout } = useAuth();
   const handleMobileNav = () => {
     const mobileNav = document.querySelector("#mobileNav");
     const panelStyles = window.getComputedStyle(mobileNav);
@@ -42,6 +43,22 @@ const Header = () => {
               <StyledLetterI>I</StyledLetterI> <StyledLetterW>w</StyledLetterW>{" "}
               <StyledLetterE>E</StyledLetterE>
             </LettersContainer>
+            <AccountSection>
+              {!user ? (
+                <>
+                  <Link href="/account/login" passHref>
+                    <StyledLink account>Login</StyledLink>
+                  </Link>
+                  <Link href="/account/register" passHref>
+                    <StyledLink account>Register</StyledLink>
+                  </Link>
+                </>
+              ) : (
+                <button onClick={() => logout()}>
+                  <StyledLink account>Logout</StyledLink>
+                </button>
+              )}
+            </AccountSection>
           </>
         ) : (
           <>
@@ -85,7 +102,10 @@ const StyledLink = styled.a`
   text-decoration: none;
   color: ${(props) => props.theme.navLink};
   font-weight: 800;
-  font-size: 1.4rem;
+  font-size: ${(props) => {
+    if (props.account) return "1rem";
+    return "1.4rem";
+  }};
   &:hover {
     color: ${(props) => props.theme.navLink};
   }
@@ -97,6 +117,7 @@ const StyledLink = styled.a`
         return "5px solid var(--caribbeanGreen)";
       else if (props.id === "header-italian-with-english")
         return "5px solid #DDDDDD";
+      else if (props.account) return `3px solid ${props.theme.navLink}`;
       else return "5px solid var(--redSalsa)";
     }};
     width: 0;
@@ -119,7 +140,7 @@ const MobileHomePageLink = styled.a`
 `;
 
 const LettersContainer = styled.div`
-  margin-right: 0.5rem;
+  margin-right: 0.1rem;
 `;
 
 const StyledLetterI = styled.span`
@@ -141,4 +162,8 @@ const StyledLetterE = styled.span`
   color: var(--redSalsa);
   font-weight: 800;
   font-size: 1.5rem;
+`;
+
+const AccountSection = styled.div`
+  padding: 10px;
 `;

@@ -1,11 +1,18 @@
+import { useEffect } from "react";
 import * as Yup from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import styled from "styled-components";
 import Button from "@/components/buttons/PushableButton";
+import useAuth from "@/hooks/useAuth";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
-  const handleLogin = () => {
-    console.warn("submitted");
+  const { login, error } = useAuth();
+
+  useEffect(() => toast.error(error));
+
+  const handleLogin = (formData) => {
+    login(formData);
   };
 
   return (

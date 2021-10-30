@@ -9,12 +9,23 @@ import styled from "styled-components";
 import ResetStats from "@/components/ResetStats";
 import dynamic from "next/dynamic";
 import Layout from "@/components/Layout";
+import { API_URL } from "config";
 
 const Flag = dynamic(() => import("react-flagpack"), { ssr: false });
 const ChangePathButton = dynamic(
   () => import("@/components/buttons/ChangePathButton"),
   { ssr: false }
 );
+
+export async function getServerSideProps({ req }) {
+  // const res = await fetch(`${API_URL}/expressions mesela`);
+  // const data = await res.json();
+  // console.log(req.headers.cookie);
+
+  return {
+    props: {},
+  };
+}
 
 const ExpressionTest = () => {
   const correctAnswerContainer = useRef(null);

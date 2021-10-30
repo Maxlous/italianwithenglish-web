@@ -1,10 +1,20 @@
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import styled from "styled-components";
 import Button from "@/components/buttons/PushableButton";
+import useAuth from "@/hooks/useAuth";
 
 const Register = () => {
-  const handleRegister = () => {};
+  const { register, error } = useAuth();
+
+  useEffect(() => toast.error(error));
+
+  const handleRegister = (formData) => {
+    register(formData);
+  };
+
   return (
     <Formik
       initialValues={{

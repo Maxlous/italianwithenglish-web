@@ -19,6 +19,7 @@
     "react-dom": "17.0.2",
     "react-flagpack": "^0.1.1",
     "react-icons": "^4.2.0",
+    "react-toastify": "^8.0.3",
     "styled-components": "^5.2.3",
     "yup": "^0.32.9"
   },
