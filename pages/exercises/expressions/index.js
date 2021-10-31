@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-import expressions from "../../../assets/Expressions";
 import AnswerCounter from "@/components/AnswerCounter";
 import PreviousSolution from "@/components/PreviousSolution";
 import TestButton from "@/components/buttons/TestButton";
@@ -10,6 +9,7 @@ import ResetStats from "@/components/ResetStats";
 import dynamic from "next/dynamic";
 import Layout from "@/components/Layout";
 import { API_URL } from "config";
+import parseCookie from "utils/parseCookie";
 
 const Flag = dynamic(() => import("react-flagpack"), { ssr: false });
 const ChangePathButton = dynamic(
@@ -18,22 +18,23 @@ const ChangePathButton = dynamic(
 );
 
 export async function getServerSideProps({ req }) {
-  // const res = await fetch(`${API_URL}/expressions mesela`);
-  // const data = await res.json();
-  // console.log(req.headers.cookie);
+  const { token } = parseCookie(req);
+
+  const res = await fetch(`${API_URL}/default-expressions`);
+  const data = await res.json();
+  const { data: expressions } = data;
 
   return {
-    props: {},
+    props: { expressions, token },
   };
 }
 
-const ExpressionTest = () => {
+const ExpressionTest = ({ expressions, token }) => {
   const correctAnswerContainer = useRef(null);
   const [italian, setItalian] = useState("");
   const [english, setEnglish] = useState("");
   const [prevAnswerEffect, setPrevAnswerEffect] = useState("");
-
-  const [stats, setStats] = useStatistics("expressionResults");
+  const [stats, setStats] = useStatistics("expressionResults", token);
   const {
     question,
     firstOption,

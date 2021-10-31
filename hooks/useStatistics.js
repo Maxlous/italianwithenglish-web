@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
-import { updateLocalStorage } from "../utils/helpers/updateLocalStorage";
+import updateLocalStorage from "../utils/updateLocalStorage";
+import updateDB from "../utils/updateDB";
+import useAuth from "./useAuth";
 
-export const useStatistics = (localStorageKey) => {
+export const useStatistics = (localStorageKey, token) => {
   const INITIAL_STATE = {
     correctAnswer: 0,
     wrongAnswer: 0,
     answerSum: 0,
     average: 0,
   };
+
+  const { user } = useAuth();
 
   const [statistics, setStatistics] = useState(() => {
     if (typeof window !== "undefined") {
@@ -19,7 +23,9 @@ export const useStatistics = (localStorageKey) => {
   });
 
   useEffect(() => {
-    updateLocalStorage(localStorageKey, statistics);
+    !user
+      ? updateLocalStorage(localStorageKey, statistics)
+      : updateDB(token, statistics);
   });
 
   const percentage = (total, correct, wrong) => {

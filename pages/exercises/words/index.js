@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-import words from "../../../assets/Words";
 import AnswerCounter from "@/components/AnswerCounter";
 import PreviousSolution from "@/components/PreviousSolution";
 import TestButton from "@/components/buttons/TestButton";
@@ -9,6 +8,7 @@ import styled from "styled-components";
 import ResetStats from "@/components/ResetStats";
 import dynamic from "next/dynamic";
 import Layout from "@/components/Layout";
+import { API_URL } from "config";
 
 const Flag = dynamic(() => import("react-flagpack"), { ssr: false });
 const ChangePathButton = dynamic(
@@ -16,7 +16,17 @@ const ChangePathButton = dynamic(
   { ssr: false }
 );
 
-const WordTest = () => {
+export async function getServerSideProps({ req }) {
+  const res = await fetch(`${API_URL}/default-words`);
+  const data = await res.json();
+  const { data: words } = data;
+
+  return {
+    props: { words },
+  };
+}
+
+const WordTest = ({ words }) => {
   const correctAnswerContainer = useRef(null);
   const [italian, setItalian] = useState("");
   const [english, setEnglish] = useState("");
