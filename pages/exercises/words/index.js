@@ -9,6 +9,7 @@ import ResetStats from "@/components/ResetStats";
 import dynamic from "next/dynamic";
 import Layout from "@/components/Layout";
 import { API_URL } from "config";
+import parseCookie from "utils/parseCookie";
 
 const Flag = dynamic(() => import("react-flagpack"), { ssr: false });
 const ChangePathButton = dynamic(
@@ -17,22 +18,24 @@ const ChangePathButton = dynamic(
 );
 
 export async function getServerSideProps({ req }) {
-  const res = await fetch(`${API_URL}/default-words`);
+  const { token } = parseCookie(req);
+
+  const res = await fetch(`${API_URL}/words`);
   const data = await res.json();
   const { data: words } = data;
 
   return {
-    props: { words },
+    props: { words, token },
   };
 }
 
-const WordTest = ({ words }) => {
+const WordTest = ({ words, token }) => {
   const correctAnswerContainer = useRef(null);
   const [italian, setItalian] = useState("");
   const [english, setEnglish] = useState("");
   const [prevAnswerEffect, setPrevAnswerEffect] = useState("");
 
-  const [stats, setStats] = useStatistics("wordResults");
+  const [stats, setStats] = useStatistics("wordStats", token);
   const {
     question,
     firstOption,

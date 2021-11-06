@@ -1,14 +1,15 @@
 import { API_URL } from "../config";
 import { toast } from "react-toastify";
 
-const updateDB = async (token, statistics) => {
-  const res = await fetch(`${API_URL}/willchange`, {
+const updateDB = async (token, statistics, field, userId) => {
+  let formData = new FormData();
+  formData.append(`${field}`, JSON.stringify(statistics));
+  const res = await fetch(`${API_URL}/users/${userId}`, {
     method: "PUT",
     headers: {
-      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    // body: { stats: JSON.stringify(statistics) },
+    body: formData,
   });
 
   if (!res.ok) {

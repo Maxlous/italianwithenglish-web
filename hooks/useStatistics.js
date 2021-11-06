@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import updateLocalStorage from "../utils/updateLocalStorage";
 import updateDB from "../utils/updateDB";
 import useAuth from "./useAuth";
+import { toast } from "react-toastify";
+import { API_URL } from "../config";
 
 export const useStatistics = (localStorageKey, token) => {
   const INITIAL_STATE = {
@@ -14,18 +16,41 @@ export const useStatistics = (localStorageKey, token) => {
   const { user } = useAuth();
 
   const [statistics, setStatistics] = useState(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && !user) {
       const storage = localStorage.getItem(localStorageKey);
       return storage ? JSON.parse(storage) : INITIAL_STATE;
     } else {
-      return {};
+      return INITIAL_STATE;
     }
   });
+
+  const getStatistics = async () => {
+    const res = await fetch(`${API_URL}/users/me`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await res.json();
+    const statsData = JSON.parse(data[localStorageKey]);
+    setStatistics(statsData);
+
+    if (!res.ok) {
+      toast.error("Something Went Wrong :(");
+    }
+  };
+
+  useEffect(() => {
+    if (user[localStorageKey]) {
+      getStatistics();
+    }
+  }, []);
 
   useEffect(() => {
     !user
       ? updateLocalStorage(localStorageKey, statistics)
-      : updateDB(token, statistics);
+      : updateDB(token, statistics, localStorageKey, user.id);
   });
 
   const percentage = (total, correct, wrong) => {

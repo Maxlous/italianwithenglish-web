@@ -20,7 +20,7 @@ const ChangePathButton = dynamic(
 export async function getServerSideProps({ req }) {
   const { token } = parseCookie(req);
 
-  const res = await fetch(`${API_URL}/default-expressions`);
+  const res = await fetch(`${API_URL}/expressions`);
   const data = await res.json();
   const { data: expressions } = data;
 
@@ -34,7 +34,7 @@ const ExpressionTest = ({ expressions, token }) => {
   const [italian, setItalian] = useState("");
   const [english, setEnglish] = useState("");
   const [prevAnswerEffect, setPrevAnswerEffect] = useState("");
-  const [stats, setStats] = useStatistics("expressionResults", token);
+  const [stats, setStats] = useStatistics("expressionStats", token);
   const {
     question,
     firstOption,

@@ -1,7 +1,10 @@
 import cookie from "cookie";
 
 const parseCookie = (req) => {
-  return cookie.parse(req ? req.headers.cookie || "" : "");
+  const rawCookie = req.headers.cookie ?? "";
+  const parsedCookie = cookie.parse(rawCookie);
+
+  return parsedCookie.token ? parsedCookie : { token: "" };
 };
 
 export default parseCookie;
