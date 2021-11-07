@@ -53,8 +53,8 @@ export const AuthProvider = ({ children }) => {
       method: "POST",
     });
     if (res.ok) {
-      setUser(null);
       router.push("/");
+      setUser(null);
     }
   };
 

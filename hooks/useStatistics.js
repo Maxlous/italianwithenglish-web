@@ -1,57 +1,46 @@
-import { useState, useEffect } from "react";
-import updateLocalStorage from "../utils/updateLocalStorage";
-import updateDB from "../utils/updateDB";
+import { useState, useEffect, useRef } from "react";
+import { updateDB, updateLocalStorage } from "../utils/updateStats";
+import { getLocalStorage, getDB } from "../utils/getStats";
 import useAuth from "./useAuth";
-import { toast } from "react-toastify";
-import { API_URL } from "../config";
 
-export const useStatistics = (localStorageKey, token) => {
+export const useStatistics = (key, token) => {
   const INITIAL_STATE = {
     correctAnswer: 0,
     wrongAnswer: 0,
     answerSum: 0,
     average: 0,
   };
-
+  const firstRender = useRef(0);
   const { user } = useAuth();
-
-  const [statistics, setStatistics] = useState(() => {
-    if (typeof window !== "undefined" && !user) {
-      const storage = localStorage.getItem(localStorageKey);
-      return storage ? JSON.parse(storage) : INITIAL_STATE;
-    } else {
-      return INITIAL_STATE;
-    }
-  });
-
-  const getStatistics = async () => {
-    const res = await fetch(`${API_URL}/users/me`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    const data = await res.json();
-    const statsData = JSON.parse(data[localStorageKey]);
-    setStatistics(statsData);
-
-    if (!res.ok) {
-      toast.error("Something Went Wrong :(");
-    }
-  };
+  const [statistics, setStatistics] = useState(INITIAL_STATE);
 
   useEffect(() => {
-    if (user[localStorageKey]) {
-      getStatistics();
+    //after user deletes stats, refresh cause state displays local storage data, will be fixed here
+    if (firstRender.current > 0) {
+      if (!user) {
+        const storage = getLocalStorage(key);
+        storage.answerSum && setStatistics(storage);
+      } else {
+        (async function () {
+          const parsedStats = await getDB(key, token);
+          parsedStats.answerSum && setStatistics(parsedStats);
+        })();
+      }
     }
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key, user]);
 
   useEffect(() => {
+    if (firstRender.current === 0 || firstRender.current === 1) {
+      firstRender.current++;
+      return;
+    }
     !user
-      ? updateLocalStorage(localStorageKey, statistics)
-      : updateDB(token, statistics, localStorageKey, user.id);
-  });
+      ? updateLocalStorage(key, statistics)
+      : updateDB(token, statistics, key, user.id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [statistics]);
+  // console.log(statistics);
 
   const percentage = (total, correct, wrong) => {
     if (correct === 0) {
@@ -65,13 +54,7 @@ export const useStatistics = (localStorageKey, token) => {
 
   const handleStats = (param) => {
     if (param === "reset") {
-      setStatistics({
-        ...statistics,
-        correctAnswer: 0,
-        wrongAnswer: 0,
-        answerSum: 0,
-        average: 0,
-      });
+      setStatistics(INITIAL_STATE);
     }
     if (param === "true") {
       setStatistics({

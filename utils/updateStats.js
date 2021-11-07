@@ -1,7 +1,7 @@
 import { API_URL } from "../config";
 import { toast } from "react-toastify";
 
-const updateDB = async (token, statistics, field, userId) => {
+export const updateDB = async (token, statistics, field, userId) => {
   let formData = new FormData();
   formData.append(`${field}`, JSON.stringify(statistics));
   const res = await fetch(`${API_URL}/users/${userId}`, {
@@ -16,4 +16,7 @@ const updateDB = async (token, statistics, field, userId) => {
     toast.error("Something Went Wrong :(");
   }
 };
-export default updateDB;
+
+export const updateLocalStorage = (key, value) => {
+  localStorage.setItem(key, JSON.stringify(value));
+};
