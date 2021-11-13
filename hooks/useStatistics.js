@@ -15,11 +15,11 @@ export const useStatistics = (key, token, user) => {
   useEffect(() => {
     if (!user) {
       const storage = getLocalStorage(key);
-      storage.answerSum && setStatistics(storage);
+      storage?.answerSum && setStatistics(storage);
     } else {
       (async function () {
         const parsedStats = await getDB(key, token);
-        parsedStats.answerSum && setStatistics(parsedStats);
+        parsedStats?.answerSum && setStatistics(parsedStats);
       })();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
