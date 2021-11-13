@@ -19,23 +19,32 @@ const ChangePathButton = dynamic(
 
 export async function getServerSideProps({ req }) {
   const { token } = parseCookie(req);
+  const userRes = await fetch(`${API_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const userData = await userRes.json();
+  let user = null;
+  if (userRes.ok) user = userData;
 
   const res = await fetch(`${API_URL}/words`);
   const data = await res.json();
   const { data: words } = data;
 
   return {
-    props: { words, token },
+    props: { words, token, user },
   };
 }
 
-const WordTest = ({ words, token }) => {
+const WordTest = ({ words, token, user }) => {
   const correctAnswerContainer = useRef(null);
   const [italian, setItalian] = useState("");
   const [english, setEnglish] = useState("");
   const [prevAnswerEffect, setPrevAnswerEffect] = useState("");
 
-  const [stats, setStats] = useStatistics("wordStats", token);
+  const [stats, setStats] = useStatistics("wordStats", token, user);
   const {
     question,
     firstOption,

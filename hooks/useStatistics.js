@@ -1,9 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { updateDB, updateLocalStorage } from "../utils/updateStats";
 import { getLocalStorage, getDB } from "../utils/getStats";
-import useAuth from "./useAuth";
 
-export const useStatistics = (key, token) => {
+export const useStatistics = (key, token, user) => {
   const INITIAL_STATE = {
     correctAnswer: 0,
     wrongAnswer: 0,
@@ -11,21 +10,17 @@ export const useStatistics = (key, token) => {
     average: 0,
   };
   const firstRender = useRef(0);
-  const { user } = useAuth();
   const [statistics, setStatistics] = useState(INITIAL_STATE);
 
   useEffect(() => {
-    //after user deletes stats, refresh cause state displays local storage data, will be fixed here
-    if (firstRender.current > 0) {
-      if (!user) {
-        const storage = getLocalStorage(key);
-        storage.answerSum && setStatistics(storage);
-      } else {
-        (async function () {
-          const parsedStats = await getDB(key, token);
-          parsedStats.answerSum && setStatistics(parsedStats);
-        })();
-      }
+    if (!user) {
+      const storage = getLocalStorage(key);
+      storage.answerSum && setStatistics(storage);
+    } else {
+      (async function () {
+        const parsedStats = await getDB(key, token);
+        parsedStats.answerSum && setStatistics(parsedStats);
+      })();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [key, user]);
