@@ -1,6 +1,7 @@
 import cookie from "cookie";
 import { API_URL } from "../../config/index";
 import { toast } from "react-toastify";
+import { withSentry } from "@sentry/nextjs";
 
 const login = async (req, res) => {
   if (req.method === "POST") {
@@ -39,4 +40,4 @@ const login = async (req, res) => {
   }
 };
 
-export default login;
+export default withSentry(login);

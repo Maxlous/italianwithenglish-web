@@ -1,4 +1,6 @@
 const withImages = require("next-images");
+const { withSentryConfig } = require("@sentry/nextjs");
+
 const securityHeaders = [
   {
     key: "X-DNS-Prefetch-Control",
@@ -26,7 +28,7 @@ const securityHeaders = [
   },
 ];
 
-module.exports = withImages({
+const moduleExports = withImages({
   reactStrictMode: true,
   async Headers() {
     return [
@@ -37,3 +39,11 @@ module.exports = withImages({
     ];
   },
 });
+
+const sentryWebpackPluginOptions = {
+  silent: true, // Suppresses all logs
+  // For all available options, see:
+  // https://github.com/getsentry/sentry-webpack-plugin#options.
+};
+
+module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);

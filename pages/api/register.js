@@ -1,5 +1,6 @@
 import cookie from "cookie";
 import { API_URL } from "../../config/index";
+import { withSentry } from "@sentry/nextjs";
 
 const register = async (req, res) => {
   if (req.method === "POST") {
@@ -38,4 +39,4 @@ const register = async (req, res) => {
   }
 };
 
-export default register;
+export default withSentry(register);

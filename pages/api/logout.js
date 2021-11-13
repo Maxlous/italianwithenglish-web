@@ -1,4 +1,5 @@
 import cookie from "cookie";
+import { withSentry } from "@sentry/nextjs";
 
 const logout = async (req, res) => {
   if (req.method === "POST") {
@@ -20,4 +21,4 @@ const logout = async (req, res) => {
   }
 };
 
-export default logout;
+export default withSentry(logout);

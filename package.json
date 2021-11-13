@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sentry/nextjs": "^6.14.3",
     "babel-preset-next": "^1.4.0",
     "bootstrap": "^5.0.0-beta3",
     "cookie": "^0.4.1",

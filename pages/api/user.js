@@ -1,5 +1,6 @@
 import parseCookie from "../../utils/parseCookie";
 import { API_URL } from "../../config/index";
+import { withSentry } from "@sentry/nextjs";
 
 const user = async (req, res) => {
   if (req.method === "GET") {
@@ -26,4 +27,4 @@ const user = async (req, res) => {
   }
 };
 
-export default user;
+export default withSentry(user);
