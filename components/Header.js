@@ -6,10 +6,16 @@ import styled from "styled-components";
 import MobileNav from "./MobileNav";
 import Link from "next/link";
 import useAuth from "@/hooks/useAuth";
+import { GiPlagueDoctorProfile } from "react-icons/gi";
+import useTheme from "@/hooks/useTheme";
+import { lightTheme } from "../styles/themes";
 
 const Header = () => {
   const [mobileNavIcon, setMobileNavIcon] = useState("hamburger-icon");
+  const [showUserDashboardMenu, setShowUserDashboardMenu] = useState(false);
   const { user, logout } = useAuth();
+  const { theme } = useTheme();
+
   const handleMobileNav = () => {
     const mobileNav = document.querySelector("#mobileNav");
     const panelStyles = window.getComputedStyle(mobileNav);
@@ -25,9 +31,12 @@ const Header = () => {
   return (
     <HeaderElement>
       <Nav>
-        <ToggleTheme />
         {typeof window !== "undefined" && window.innerWidth >= 480 ? (
           <>
+            <LettersContainer>
+              <StyledLetterI>I</StyledLetterI> <StyledLetterW>w</StyledLetterW>{" "}
+              <StyledLetterE>E</StyledLetterE>
+            </LettersContainer>
             <Link href="/exercises" passHref>
               <StyledLink id="header-exercises">Exercises</StyledLink>
             </Link>
@@ -39,10 +48,6 @@ const Header = () => {
             <Link href="/contact" passHref>
               <StyledLink id="header-contact">Contact</StyledLink>
             </Link>
-            <LettersContainer>
-              <StyledLetterI>I</StyledLetterI> <StyledLetterW>w</StyledLetterW>{" "}
-              <StyledLetterE>E</StyledLetterE>
-            </LettersContainer>
             <AccountSection>
               {!user ? (
                 <>
@@ -54,17 +59,45 @@ const Header = () => {
                   </Link>
                 </>
               ) : (
-                <button onClick={() => logout()}>
-                  <StyledLink account>Logout</StyledLink>
-                </button>
+                <>
+                  <GiPlagueDoctorProfile
+                    size="2em"
+                    style={{
+                      background:
+                        theme === "dark" ? lightTheme.fontColor : lightTheme.bg,
+                      borderRadius: 30,
+                      cursor: "pointer",
+                    }}
+                    onClick={() =>
+                      setShowUserDashboardMenu(!showUserDashboardMenu)
+                    }
+                  />
+                </>
               )}
             </AccountSection>
           </>
         ) : (
           <>
-            <Link href="/" passHref>
-              <MobileHomePageLink>Italian with English</MobileHomePageLink>
+            <GiPlagueDoctorProfile
+              size="2em"
+              style={{
+                background:
+                  theme === "dark" ? lightTheme.fontColor : lightTheme.bg,
+                borderRadius: 30,
+                cursor: "pointer",
+              }}
+              onClick={() => setShowUserDashboardMenu(!showUserDashboardMenu)}
+            />
+            <Link href="/exercises" passHref>
+              <ExercisesLink>
+                <LettersContainer>
+                  <StyledLetterI>I</StyledLetterI>{" "}
+                  <StyledLetterW>w</StyledLetterW>{" "}
+                  <StyledLetterE>E</StyledLetterE>
+                </LettersContainer>
+              </ExercisesLink>
             </Link>
+
             {mobileNavIcon === "hamburger-icon" ? (
               <HamburgerMenuIcon handleMobileNav={handleMobileNav} />
             ) : (
@@ -74,6 +107,35 @@ const Header = () => {
         )}
       </Nav>
       <MobileNav />
+      {showUserDashboardMenu && (
+        <UserDashboardMenu>
+          {!user ? (
+            <>
+              <Link href="/account/login" passHref>
+                <StyledLink account>Login</StyledLink>
+              </Link>
+              <Link href="/account/register" passHref>
+                <StyledLink account>Register</StyledLink>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link href="/account/dashboard" passHref>
+                <StyledLink account>Dashboard</StyledLink>
+              </Link>
+              <ToggleTheme />
+              <Logout
+                onClick={() => {
+                  setShowUserDashboardMenu(false);
+                  logout();
+                }}
+              >
+                <StyledLink account>Logout</StyledLink>
+              </Logout>
+            </>
+          )}
+        </UserDashboardMenu>
+      )}
     </HeaderElement>
   );
 };
@@ -132,15 +194,9 @@ const StyledLink = styled.a`
   }
 `;
 
-const MobileHomePageLink = styled.a`
-  text-decoration: none;
-  color: ${(props) => props.theme.navLink};
-  font-weight: 800;
-  font-size: 1.4rem;
-`;
-
 const LettersContainer = styled.div`
-  margin-right: 0.1rem;
+  margin-left: 0.5rem;
+  pointer-events: none;
 `;
 
 const StyledLetterI = styled.span`
@@ -166,4 +222,30 @@ const StyledLetterE = styled.span`
 
 const AccountSection = styled.div`
   padding: 10px;
+`;
+
+const UserDashboardMenu = styled.div`
+  position: absolute;
+  display: grid;
+  place-items: center;
+  height: 15vh;
+  width: 10vw;
+  right: 0;
+  background: ${(props) => props.theme.headerBackground};
+  border-end-start-radius: 10px;
+  @media screen and (max-width: 480px) {
+    width: 30vw;
+    left: 0;
+    border-end-start-radius: 0px;
+    border-end-end-radius: 10px;
+  }
+`;
+
+const Logout = styled.button`
+  border: none;
+  background: none;
+`;
+
+const ExercisesLink = styled.a`
+  text-decoration: none;
 `;
