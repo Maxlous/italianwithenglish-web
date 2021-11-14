@@ -1,20 +1,138 @@
 import Layout from "@/components/Layout";
 import styled from "styled-components";
+import useAuth from "@/hooks/useAuth";
+import PieChart from "@/components/PieChart";
+import CylinderChart from "@/components/CylinderChart";
+import { CgCheckO, CgCloseO, CgRadioChecked } from "react-icons/cg";
+import { FaPercent } from "react-icons/fa";
 
-const dashboard = () => {
+const Dashboard = () => {
+  const { user } = useAuth();
+  let wordStats = {};
+  let expressionStats = {};
+
+  try {
+    wordStats = JSON.parse(user.wordStats);
+    expressionStats = JSON.parse(user.expressionStats);
+  } catch (e) {
+    console.error(e);
+  }
+
   return (
-    <Layout>
+    <Layout title="Dashboard">
       <Container>
-        <h1>this is dashboard</h1>
+        <Title>{`welcome to your dashboard ${user?.username}`}</Title>
+        <ChartsContainer>
+          <Wrapper>
+            <PieChart wordStats={wordStats} />
+            <ChartStats>
+              <Icons>
+                <Correct>
+                  <CgCheckO size="4rem" />
+                  <Text>{wordStats?.correctAnswer}</Text>
+                </Correct>
+                <Wrong>
+                  <CgCloseO size="4rem" />
+                  <Text>{wordStats?.wrongAnswer}</Text>
+                </Wrong>
+                <Sum>
+                  <CgRadioChecked size="4.2rem" />
+                  <Text>{wordStats?.average}</Text>
+                </Sum>
+                <Average>
+                  <FaPercent size="3rem" />
+                  <Text>{wordStats?.answerSum}</Text>
+                </Average>
+              </Icons>
+            </ChartStats>
+          </Wrapper>
+          <Wrapper>
+            <CylinderChart expressionStats={expressionStats} />
+            <ChartStats>
+              <Icons>
+                <Correct>
+                  <CgCheckO size="4rem" />
+                  <Text>{expressionStats?.correctAnswer}</Text>
+                </Correct>
+                <Wrong>
+                  <CgCloseO size="4rem" />
+                  <Text>{expressionStats?.wrongAnswer}</Text>
+                </Wrong>
+                <Sum>
+                  <CgRadioChecked size="4.2rem" />
+                  <Text>{expressionStats?.answerSum}</Text>
+                </Sum>
+                <Average>
+                  <FaPercent size="3rem" />
+                  <Text>{expressionStats?.average}</Text>
+                </Average>
+              </Icons>
+            </ChartStats>
+          </Wrapper>
+        </ChartsContainer>
       </Container>
     </Layout>
   );
 };
 
-export default dashboard;
+export default Dashboard;
 
 const Container = styled.article`
+  margin-top: 5vh;
+`;
+
+const Title = styled.h1`
+  text-align: center;
+`;
+
+const ChartsContainer = styled.div`
+  padding: 50px;
+`;
+
+const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
-  margin-top: 10vh;
+  margin-bottom: 2rem;
+`;
+
+const ChartStats = styled.div`
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+`;
+
+const Text = styled.p`
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-top: auto;
+`;
+
+const Correct = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3px;
+`;
+const Wrong = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3px;
+`;
+const Sum = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+const Average = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 7px;
+`;
+
+const Icons = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 `;

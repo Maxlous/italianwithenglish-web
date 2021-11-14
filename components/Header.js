@@ -9,12 +9,14 @@ import useAuth from "@/hooks/useAuth";
 import { GiPlagueDoctorProfile } from "react-icons/gi";
 import useTheme from "@/hooks/useTheme";
 import { lightTheme } from "../styles/themes";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const [mobileNavIcon, setMobileNavIcon] = useState("hamburger-icon");
   const [showUserDashboardMenu, setShowUserDashboardMenu] = useState(false);
   const { user, logout } = useAuth();
   const { theme } = useTheme();
+  const router = useRouter();
 
   const handleMobileNav = () => {
     const mobileNav = document.querySelector("#mobileNav");
@@ -128,6 +130,7 @@ const Header = () => {
                 onClick={() => {
                   setShowUserDashboardMenu(false);
                   logout();
+                  router.push("/");
                 }}
               >
                 <StyledLink account>Logout</StyledLink>
@@ -233,6 +236,7 @@ const UserDashboardMenu = styled.div`
   right: 0;
   background: ${(props) => props.theme.headerBackground};
   border-end-start-radius: 10px;
+  z-index: 1;
   @media screen and (max-width: 480px) {
     width: 30vw;
     left: 0;
