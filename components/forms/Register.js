@@ -83,22 +83,28 @@ const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
+  width: 100%;
 `;
 
 const Divider = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 40%;
   margin-bottom: 20px;
   color: var(--redSalsa);
+  @media screen and (max-width: 768px) {
+    width: 70%;
+  }
 `;
 
 const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 40%;
   margin-top: 20px;
+  @media screen and (max-width: 768px) {
+    width: 70%;
+  }
 `;
 
 const Title = styled.h2`

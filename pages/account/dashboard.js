@@ -37,57 +37,63 @@ const Dashboard = ({ user }) => {
 
   return (
     <Layout title="Dashboard">
-      <Container>
-        <Title>{`welcome to your dashboard ${user?.username}`}</Title>
-        <ChartsContainer>
-          <Wrapper>
-            <PieChart wordStats={wordStats} />
-            <ChartStats>
-              <Icons>
-                <Correct>
-                  <CgCheckO size="4rem" />
-                  <Text>{wordStats?.correctAnswer}</Text>
-                </Correct>
-                <Wrong>
-                  <CgCloseO size="4rem" />
-                  <Text>{wordStats?.wrongAnswer}</Text>
-                </Wrong>
-                <Sum>
-                  <CgRadioChecked size="4.2rem" />
-                  <Text>{wordStats?.answerSum}</Text>
-                </Sum>
-                <Average>
-                  <FaPercent size="3rem" />
-                  <Text>{wordStats?.average}</Text>
-                </Average>
-              </Icons>
-            </ChartStats>
-          </Wrapper>
-          <Wrapper>
-            <CylinderChart expressionStats={expressionStats} />
-            <ChartStats>
-              <Icons>
-                <Correct>
-                  <CgCheckO size="4rem" />
-                  <Text>{expressionStats?.correctAnswer}</Text>
-                </Correct>
-                <Wrong>
-                  <CgCloseO size="4rem" />
-                  <Text>{expressionStats?.wrongAnswer}</Text>
-                </Wrong>
-                <Sum>
-                  <CgRadioChecked size="4.2rem" />
-                  <Text>{expressionStats?.answerSum}</Text>
-                </Sum>
-                <Average>
-                  <FaPercent size="3rem" />
-                  <Text>{expressionStats?.average}</Text>
-                </Average>
-              </Icons>
-            </ChartStats>
-          </Wrapper>
-        </ChartsContainer>
-      </Container>
+      {user ? (
+        <Container>
+          <Title>{`welcome to your dashboard ${user?.username}`}</Title>
+          <ChartsContainer>
+            <Wrapper>
+              <PieChart wordStats={wordStats} />
+              <ChartStats>
+                <Icons>
+                  <Correct>
+                    <CgCheckO size="4rem" />
+                    <Text>{wordStats?.correctAnswer}</Text>
+                  </Correct>
+                  <Wrong>
+                    <CgCloseO size="4rem" />
+                    <Text>{wordStats?.wrongAnswer}</Text>
+                  </Wrong>
+                  <Sum>
+                    <CgRadioChecked size="4.2rem" />
+                    <Text>{wordStats?.answerSum}</Text>
+                  </Sum>
+                  <Average>
+                    <FaPercent size="3rem" />
+                    <Text>{wordStats?.average}</Text>
+                  </Average>
+                </Icons>
+              </ChartStats>
+            </Wrapper>
+            <Wrapper>
+              <CylinderChart expressionStats={expressionStats} />
+              <ChartStats>
+                <Icons>
+                  <Correct>
+                    <CgCheckO size="4rem" />
+                    <Text>{expressionStats?.correctAnswer}</Text>
+                  </Correct>
+                  <Wrong>
+                    <CgCloseO size="4rem" />
+                    <Text>{expressionStats?.wrongAnswer}</Text>
+                  </Wrong>
+                  <Sum>
+                    <CgRadioChecked size="4.2rem" />
+                    <Text>{expressionStats?.answerSum}</Text>
+                  </Sum>
+                  <Average>
+                    <FaPercent size="3rem" />
+                    <Text>{expressionStats?.average}</Text>
+                  </Average>
+                </Icons>
+              </ChartStats>
+            </Wrapper>
+          </ChartsContainer>
+        </Container>
+      ) : (
+        <h2 style={{ textAlign: "center", marginTop: 50 }}>
+          Login to access your dashboard!
+        </h2>
+      )}
     </Layout>
   );
 };
