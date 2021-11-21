@@ -1,13 +1,30 @@
 import Layout from "@/components/Layout";
 import styled from "styled-components";
-import useAuth from "@/hooks/useAuth";
 import PieChart from "@/components/PieChart";
 import CylinderChart from "@/components/CylinderChart";
 import { CgCheckO, CgCloseO, CgRadioChecked } from "react-icons/cg";
 import { FaPercent } from "react-icons/fa";
+import parseCookie from "../../utils/parseCookie";
+import { API_URL } from "../../config";
 
-const Dashboard = () => {
-  const { user } = useAuth();
+export async function getServerSideProps({ req }) {
+  const { token } = parseCookie(req);
+  const userRes = await fetch(`${API_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const userData = await userRes.json();
+  let user = null;
+  if (userRes.ok) user = userData;
+
+  return {
+    props: { user },
+  };
+}
+
+const Dashboard = ({ user }) => {
   let wordStats = {};
   let expressionStats = {};
 
@@ -37,11 +54,11 @@ const Dashboard = () => {
                 </Wrong>
                 <Sum>
                   <CgRadioChecked size="4.2rem" />
-                  <Text>{wordStats?.average}</Text>
+                  <Text>{wordStats?.answerSum}</Text>
                 </Sum>
                 <Average>
                   <FaPercent size="3rem" />
-                  <Text>{wordStats?.answerSum}</Text>
+                  <Text>{wordStats?.average}</Text>
                 </Average>
               </Icons>
             </ChartStats>
@@ -92,6 +109,9 @@ const ChartsContainer = styled.div`
 const Wrapper = styled.div`
   display: flex;
   margin-bottom: 2rem;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const ChartStats = styled.div`
@@ -99,6 +119,9 @@ const ChartStats = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const Text = styled.p`

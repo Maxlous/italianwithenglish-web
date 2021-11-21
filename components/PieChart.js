@@ -51,13 +51,13 @@ const PieChart = ({ wordStats }) => {
         data: [
           {
             name: "Correct Answers",
-            y: wordStats.correctAnswer,
+            y: wordStats?.correctAnswer,
             sliced: true,
             color: "var(--caribbeanGreen)",
           },
           {
             name: "Wrong Answers",
-            y: wordStats.wrongAnswer,
+            y: wordStats?.wrongAnswer,
             sliced: true,
             color: "var(--redSalsa)",
           },
@@ -76,4 +76,7 @@ export default PieChart;
 
 const Wrapper = styled.div`
   width: 50%;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;

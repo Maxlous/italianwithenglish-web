@@ -49,21 +49,21 @@ const CylinderChart = ({ expressionStats }) => {
         data: [
           {
             name: "Correct",
-            y: expressionStats.correctAnswer,
+            y: expressionStats?.correctAnswer,
             color: "var(--caribbeanGreen",
           },
           {
             name: "Wrong",
-            y: expressionStats.wrongAnswer,
+            y: expressionStats?.wrongAnswer,
+            color: "var(--redSalsa)",
+          },
+          {
+            name: "Sum",
+            y: expressionStats?.answerSum,
             color:
               theme === "dark"
                 ? darkTheme.headerBackground
                 : lightTheme.headerBackground,
-          },
-          {
-            name: "Sum",
-            y: expressionStats.answerSum,
-            color: "var(--redSalsa)",
           },
         ],
         name: "Quantity",
@@ -82,4 +82,7 @@ export default CylinderChart;
 
 const Wrapper = styled.div`
   width: 50%;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;

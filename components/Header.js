@@ -7,6 +7,7 @@ import MobileNav from "./MobileNav";
 import Link from "next/link";
 import useAuth from "@/hooks/useAuth";
 import { GiPlagueDoctorProfile } from "react-icons/gi";
+import { GrConnect } from "react-icons/gr";
 import useTheme from "@/hooks/useTheme";
 import { lightTheme } from "../styles/themes";
 import { useRouter } from "next/router";
@@ -80,16 +81,29 @@ const Header = () => {
           </>
         ) : (
           <>
-            <GiPlagueDoctorProfile
-              size="2em"
-              style={{
-                background:
-                  theme === "dark" ? lightTheme.fontColor : lightTheme.bg,
-                borderRadius: 30,
-                cursor: "pointer",
-              }}
-              onClick={() => setShowUserDashboardMenu(!showUserDashboardMenu)}
-            />
+            {!user ? (
+              <GrConnect
+                size="2em"
+                style={{
+                  background:
+                    theme === "dark" ? lightTheme.fontColor : lightTheme.bg,
+                  borderRadius: 30,
+                  cursor: "pointer",
+                }}
+                onClick={() => setShowUserDashboardMenu(!showUserDashboardMenu)}
+              />
+            ) : (
+              <GiPlagueDoctorProfile
+                size="2em"
+                style={{
+                  background:
+                    theme === "dark" ? lightTheme.fontColor : lightTheme.bg,
+                  borderRadius: 30,
+                  cursor: "pointer",
+                }}
+                onClick={() => setShowUserDashboardMenu(!showUserDashboardMenu)}
+              />
+            )}
             <Link href="/exercises" passHref>
               <ExercisesLink>
                 <LettersContainer>
@@ -147,20 +161,14 @@ export default Header;
 
 const HeaderElement = styled.header`
   background: ${(props) => props.theme.headerBackground};
-  height: 5vh;
-  @media screen and (max-height: 740px) {
-    height: 10vh;
-  }
+  height: 4rem;
 `;
 
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 5vh;
-  @media screen and (max-height: 740px) {
-    height: 10vh;
-  }
+  height: 4rem;
 `;
 
 const StyledLink = styled.a`
