@@ -3,12 +3,17 @@ import WhiteLogo from "@/components/WhiteLogo";
 import Button from "@/components/buttons/PushableButton";
 import IndicatorArrows from "@/components/IndicatorArrows";
 import Layout from "@/components/Layout";
+import useAuth from "@/hooks/useAuth";
 
 const Exercises = () => {
+  const { user } = useAuth();
+
   return (
     <Layout>
       <Container>
-        <Heading>What would you like to study?</Heading>
+        <Heading>{`What would you like to study ${
+          user ? user.username : ""
+        }?`}</Heading>
         <Wrapper>
           <PathContainer>
             <SubHeading>play with awesome words...</SubHeading>
