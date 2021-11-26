@@ -30,14 +30,14 @@ const securityHeaders = [
 
 const moduleExports = withImages({
   reactStrictMode: true,
-  async Headers() {
-    return [
-      {
-        source: "/(.*)",
-        headers: securityHeaders,
-      },
-    ];
-  },
+  // async Headers() {
+  //   return [
+  //     {
+  //       source: "/(.*)",
+  //       headers: securityHeaders,
+  //     },
+  //   ];
+  // },
 });
 
 const sentryWebpackPluginOptions = {
