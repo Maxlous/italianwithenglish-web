@@ -50,7 +50,11 @@ function MyApp({ Component, pageProps }) {
       <AuthProvider>
         <ThemeProvider>
           <Component {...pageProps} />
-          <ToastContainer theme="dark" />
+          <ToastContainer
+            theme="colored"
+            draggable={true}
+            draggablePercent={60}
+          />
         </ThemeProvider>
       </AuthProvider>
     </>
