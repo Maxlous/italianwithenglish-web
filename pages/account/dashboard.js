@@ -25,16 +25,6 @@ export async function getServerSideProps({ req }) {
 }
 
 const Dashboard = ({ user }) => {
-  let wordStats = {};
-  let expressionStats = {};
-
-  // try {
-  //   wordStats = JSON.parse(user.wordStats);
-  //   expressionStats = JSON.parse(user.expressionStats);
-  // } catch (e) {
-  //   console.error(e);
-  // }
-
   return (
     <Layout title="Dashboard">
       {user ? (
@@ -65,7 +55,7 @@ const Dashboard = ({ user }) => {
               </ChartStats>
             </Wrapper>
             <Wrapper>
-              <CylinderChart expressionStats={expressionStats} />
+              <CylinderChart expressionStats={user?.expressionStats} />
               <ChartStats>
                 <Icons>
                   <Correct>
