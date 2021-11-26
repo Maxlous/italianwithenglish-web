@@ -28,12 +28,12 @@ const Dashboard = ({ user }) => {
   let wordStats = {};
   let expressionStats = {};
 
-  try {
-    wordStats = JSON.parse(user.wordStats);
-    expressionStats = JSON.parse(user.expressionStats);
-  } catch (e) {
-    console.error(e);
-  }
+  // try {
+  //   wordStats = JSON.parse(user.wordStats);
+  //   expressionStats = JSON.parse(user.expressionStats);
+  // } catch (e) {
+  //   console.error(e);
+  // }
 
   return (
     <Layout title="Dashboard">
@@ -42,24 +42,24 @@ const Dashboard = ({ user }) => {
           <Title>{`welcome to your dashboard ${user?.username}`}</Title>
           <ChartsContainer>
             <Wrapper>
-              <PieChart wordStats={wordStats} />
+              <PieChart wordStats={user?.wordStats} />
               <ChartStats>
                 <Icons>
                   <Correct>
                     <CgCheckO size="4rem" />
-                    <Text>{wordStats?.correctAnswer}</Text>
+                    <Text>{user?.wordStats?.correctAnswer}</Text>
                   </Correct>
                   <Wrong>
                     <CgCloseO size="4rem" />
-                    <Text>{wordStats?.wrongAnswer}</Text>
+                    <Text>{user?.wordStats?.wrongAnswer}</Text>
                   </Wrong>
                   <Sum>
                     <CgRadioChecked size="4.2rem" />
-                    <Text>{wordStats?.answerSum}</Text>
+                    <Text>{user?.wordStats?.answerSum}</Text>
                   </Sum>
                   <Average>
                     <FaPercent size="3rem" />
-                    <Text>{wordStats?.average}</Text>
+                    <Text>{user?.wordStats?.average}</Text>
                   </Average>
                 </Icons>
               </ChartStats>
@@ -70,19 +70,19 @@ const Dashboard = ({ user }) => {
                 <Icons>
                   <Correct>
                     <CgCheckO size="4rem" />
-                    <Text>{expressionStats?.correctAnswer}</Text>
+                    <Text>{user?.expressionStats?.correctAnswer}</Text>
                   </Correct>
                   <Wrong>
                     <CgCloseO size="4rem" />
-                    <Text>{expressionStats?.wrongAnswer}</Text>
+                    <Text>{user?.expressionStats?.wrongAnswer}</Text>
                   </Wrong>
                   <Sum>
                     <CgRadioChecked size="4.2rem" />
-                    <Text>{expressionStats?.answerSum}</Text>
+                    <Text>{user?.expressionStats?.answerSum}</Text>
                   </Sum>
                   <Average>
                     <FaPercent size="3rem" />
-                    <Text>{expressionStats?.average}</Text>
+                    <Text>{user?.expressionStats?.average}</Text>
                   </Average>
                 </Icons>
               </ChartStats>
