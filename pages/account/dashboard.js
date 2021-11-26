@@ -28,12 +28,12 @@ const Dashboard = ({ user }) => {
   let wordStats = {};
   let expressionStats = {};
 
-  try {
-    wordStats = JSON.parse(user.wordStats);
-    expressionStats = JSON.parse(user.expressionStats);
-  } catch (e) {
-    console.error(e);
-  }
+  // try {
+  //   wordStats = JSON.parse(user.wordStats);
+  //   expressionStats = JSON.parse(user.expressionStats);
+  // } catch (e) {
+  //   console.error(e);
+  // }
 
   return (
     <Layout title="Dashboard">
