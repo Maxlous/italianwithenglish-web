@@ -85,8 +85,7 @@ const Header = () => {
               <GrConnect
                 size="2em"
                 style={{
-                  background:
-                    theme === "dark" ? lightTheme.fontColor : lightTheme.bg,
+                  background: lightTheme.bg,
                   borderRadius: 30,
                   cursor: "pointer",
                 }}
