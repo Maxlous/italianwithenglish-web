@@ -14,5 +14,5 @@ export const getDB = async (key, token) => {
   });
 
   const data = await res.json();
-  return JSON.parse(data[key]);
+  return data[key];
 };
