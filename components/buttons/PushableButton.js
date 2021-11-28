@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 const Button = ({ path = null, children, ...props }) => {
   const router = useRouter();
   const pathHandler = () => {
-    router.push(`/exercises/${path}`);
+    router.push(path);
   };
 
   return (

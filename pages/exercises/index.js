@@ -18,12 +18,12 @@ const Exercises = () => {
           <PathContainer>
             <SubHeading>play with awesome words...</SubHeading>
             <IndicatorArrows />
-            <Button path="words">GO</Button>
+            <Button path="/exercises/words">GO</Button>
           </PathContainer>
           <PathContainer>
             <SubHeading>tackle with cool expressions..</SubHeading>
             <IndicatorArrows />
-            <Button path="expressions">GO</Button>
+            <Button path="/exercises/expressions">GO</Button>
           </PathContainer>
         </Wrapper>
         <WhiteLogo />

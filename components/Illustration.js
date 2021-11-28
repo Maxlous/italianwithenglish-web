@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-const Illustration = (props) => {
+const Illustration = ({ imageSource, imageAlt, ...rest }) => {
   return (
-    <Container>
-      <Image src={props.imageSource} alt={props.imageAlt} />
+    <Container {...rest}>
+      <Image src={imageSource} alt={imageAlt} />
     </Container>
   );
 };
