@@ -28,7 +28,7 @@ const Button = styled.button`
   border: none;
   color: black;
   border-radius: 1.5rem;
-  padding: 0.5em 2em;
+  padding: 1em 2em;
   &:hover {
     color: #000;
     transform: translateY(8%);
