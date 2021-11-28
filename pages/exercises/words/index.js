@@ -127,7 +127,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  @media screen and (max-height: 720px) {
+  @media screen and (max-height: 812px) {
     font-size: 0.7rem;
   }
 `;
@@ -136,7 +136,7 @@ const Article = styled.article`
   margin-block: 3rem;
   margin-top: 3rem;
   margin-bottom: 3rem;
-  @media screen and (max-height: 720px) {
+  @media screen and (max-height: 812px) {
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
@@ -167,12 +167,15 @@ const Question = styled.div`
 const H4 = styled.h4`
   text-align: center;
   margin-bottom: 3rem;
-  @media screen and (max-height: 720px) {
-    margin-bottom: 1rem;
+  @media screen and (max-height: 812px) {
+    margin-bottom: 0.5rem;
   }
 `;
 
 const H5 = styled.h5`
   margin-left: 1rem;
   margin-bottom: 2rem;
+  @media screen and (max-height: 812px) {
+    margin-bottom: 1rem;
+  }
 `;

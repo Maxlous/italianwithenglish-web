@@ -28,10 +28,13 @@ const Button = styled.button`
   border: none;
   color: black;
   border-radius: 1.5rem;
-  padding: 1em 2em;
+  padding: 0.75em 1.5em;
   &:hover {
     color: #000;
     transform: translateY(8%);
     border-radius: 15px;
+  }
+  @media screen and (max-height: 812px) {
+    padding: 1em 2em;
   }
 `;

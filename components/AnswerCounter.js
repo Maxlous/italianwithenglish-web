@@ -37,7 +37,7 @@ const Section = styled.section`
   align-items: center;
   margin-top: 4rem;
   width: 100%;
-  @media screen and (max-height: 720px) {
+  @media screen and (max-height: 812px) {
     margin-top: 2rem;
   }
 `;
@@ -47,7 +47,7 @@ const Stats = styled.div`
   justify-content: space-around;
   align-items: center;
   margin-bottom: 2rem;
-  @media screen and (max-width: 760px) {
+  @media screen and (max-width: 812px) {
     width: 90%;
   }
 `;
