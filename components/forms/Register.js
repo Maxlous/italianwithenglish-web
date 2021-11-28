@@ -111,7 +111,10 @@ const Title = styled.h2`
   text-align: center;
   margin-bottom: 20px;
   color: ${(props) => props.theme.fontColor};
-  text-decoration: underline var(--caribbeanGreen);
+  text-decoration-line: underline;
+  -webkit-text-decoration-line: underline;
+  text-decoration-color: var(--caribbeanGreen);
+  -webkit-text-decoration-color: var(--caribbeanGreen);
   text-decoration-thickness: 5px;
   text-underline-offset: 7px;
 `;
@@ -132,7 +135,10 @@ const Input = styled(Field)`
 
 const Label = styled.label`
   margin-bottom: 15px;
-  text-decoration: underline var(--caribbeanGreen);
+  text-decoration-line: underline;
+  -webkit-text-decoration-line: underline;
+  text-decoration-color: var(--caribbeanGreen);
+  -webkit-text-decoration-color: var(--caribbeanGreen);
   text-decoration-thickness: 3px;
   text-underline-offset: 4px;
 `;

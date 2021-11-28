@@ -143,7 +143,10 @@ const Wrapper = styled.div`
 `;
 
 const GreenSpan = styled.span`
-  text-decoration: underline var(--caribbeanGreen);
+  text-decoration-line: underline;
+  -webkit-text-decoration-line: underline;
+  text-decoration-color: var(--caribbeanGreen);
+  -webkit-text-decoration-color: var(--caribbeanGreen);
   text-decoration-thickness: 3px;
   text-underline-offset: 5px;
 `;

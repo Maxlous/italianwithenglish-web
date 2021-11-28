@@ -67,7 +67,10 @@ const Heading = styled.h1`
 
 const SubHeading = styled.h2`
   margin-top: 2.5rem;
-  text-decoration: underline var(--caribbeanGreen);
+  text-decoration-line: underline;
+  -webkit-text-decoration-line: underline;
+  text-decoration-color: var(--caribbeanGreen);
+  -webkit-text-decoration-color: var(--caribbeanGreen);
   text-decoration-thickness: 8px;
   text-underline-offset: 10px;
   @media screen and (max-width: 370px) {
