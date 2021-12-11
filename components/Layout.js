@@ -16,6 +16,11 @@ const Layout = ({ title, keywords, description, children }) => {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo.ico" />
+        <script
+          data-ad-client="ca-pub-6508190625272944"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        ></script>
       </Head>
       <Header />
       <main>{children}</main>
