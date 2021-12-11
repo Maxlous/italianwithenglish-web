@@ -47,6 +47,11 @@ function MyApp({ Component, pageProps }) {
           `,
         }}
       />
+      <script
+        data-ad-client="ca-pub-6508190625272944"
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+      ></script>
       <AuthProvider>
         <ThemeProvider>
           <Component {...pageProps} />
